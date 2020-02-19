@@ -24,6 +24,7 @@
       <list>
         <option value="FRC v2 Subsystem" />
         <option value="FRC v2 Command" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,6 +113,10 @@
     </state>
     <state x="551" y="264" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582138765528" />
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582091215860" />
+    <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser" timestamp="1582146488194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="223" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1582146488194" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582138902223">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

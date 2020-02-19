@@ -15,6 +15,10 @@ public final class Constants {
         public static final int rotateJoystickPort = 2;
     }
 
+    public static final class CurrentLimitingConstants {
+        public final static double currentLimit = 100;
+    }
+
     public static final class intakeConstants {
         public static final double intakePower = 0.45;
         public static final int activateIntakeButtonID = 3;

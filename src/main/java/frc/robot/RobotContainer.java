@@ -18,9 +18,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.DriveCommands.ArcadeDriveCommand;
 import frc.robot.commands.DriveCommands.SwitchDriveModeCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
-import frc.robot.commands.NonHICommands.BrownoutProtectionCommand;
+import frc.robot.commands.NonOICommands.BrownoutProtectionCommand;
 import frc.robot.subsystems.*;
-import frc.robot.subsystems.NonHISubsystems.CurrentLimiterSubsystem;
+import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
 
 public class RobotContainer {
 
@@ -42,18 +42,11 @@ public class RobotContainer {
     TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
     TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
 
-    // Command Imports
-    BrownoutProtectionCommand m_brownoutProtectionCommand =
-            new BrownoutProtectionCommand(
-                    m_climbSubsystem,
-                    m_colorWheelSubsystem,
-                    m_currentLimiterSubsystem,
-                    m_driveTrainSubsystem,
-                    m_hopperSubsystem,
-                    m_intakeSubsystem,
-                    m_shooterSubsystem,
-                    m_turretIntakeSubsystem,
-                    m_turretRotatorSubsystem);
+  //Command Imports
+  BrownoutProtectionCommand m_brownoutProtectionCommand = new BrownoutProtectionCommand( m_currentLimiterSubsystem );
+ 
+  SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
+  SwitchDriveModeCommand m_switchDriveModeCommand = new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
     SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
     SwitchDriveModeCommand m_switchDriveModeCommand =
