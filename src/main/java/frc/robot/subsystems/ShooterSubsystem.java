@@ -7,24 +7,21 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSubsystem extends SubsystemBase {
 
-    WPI_TalonFX shooter = new WPI_TalonFX(shooterID);
-    private final static ShooterSubsystem INSTANCE = new ShooterSubsystem();
+  WPI_TalonFX shooter = new WPI_TalonFX(shooterID);
+  private static final ShooterSubsystem INSTANCE = new ShooterSubsystem();
 
+  private ShooterSubsystem() {}
 
-    private ShooterSubsystem() {
-
+  public int ShooterMotors() {
+    int output = 0;
+    if (shooter.get() != 0) {
+      output += 1;
     }
 
-    public int ShooterMotors() {
-        int output = 0;
-        if (shooter.get() != 0) { output += 1; }
+    return output;
+  }
 
-        return output;
-    }
-
-    public static ShooterSubsystem getInstance() {
-        return INSTANCE;
-    }
-
+  public static ShooterSubsystem getInstance() {
+    return INSTANCE;
+  }
 }
-

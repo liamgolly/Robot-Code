@@ -7,25 +7,22 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class HopperSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX hopperMotor = new WPI_TalonSRX(hopperID);
+  WPI_TalonSRX hopperMotor = new WPI_TalonSRX(hopperID);
 
-    private final static HopperSubsystem INSTANCE = new HopperSubsystem();
+  private static final HopperSubsystem INSTANCE = new HopperSubsystem();
 
-    private HopperSubsystem() {
+  private HopperSubsystem() {}
 
+  public int HopperMotors() {
+    int output = 0;
+    if (hopperMotor.get() != 0) {
+      output += 1;
     }
 
+    return output;
+  }
 
-    public int HopperMotors() {
-        int output = 0;
-        if (hopperMotor.get() != 0) { output += 1; }
-
-        return output;
-    }
-
-    public static HopperSubsystem getInstance() {
-        return INSTANCE;
-    }
-
+  public static HopperSubsystem getInstance() {
+    return INSTANCE;
+  }
 }
-

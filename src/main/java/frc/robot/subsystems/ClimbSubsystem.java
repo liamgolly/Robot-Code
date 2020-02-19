@@ -7,31 +7,30 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ClimbSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX pvcExtender = new WPI_TalonSRX(pvcExtenderID);
-    WPI_TalonSRX leftWinch = new WPI_TalonSRX(leftWinchID);
-    WPI_TalonSRX rightWinch = new WPI_TalonSRX(rightWinchID);
+  WPI_TalonSRX pvcExtender = new WPI_TalonSRX(pvcExtenderID);
+  WPI_TalonSRX leftWinch = new WPI_TalonSRX(leftWinchID);
+  WPI_TalonSRX rightWinch = new WPI_TalonSRX(rightWinchID);
 
-    private final static ClimbSubsystem INSTANCE = new ClimbSubsystem();
+  private static final ClimbSubsystem INSTANCE = new ClimbSubsystem();
 
+  private ClimbSubsystem() {}
 
-    private ClimbSubsystem() {
-
+  public int ClimbMotors() {
+    int output = 0;
+    if (pvcExtender.get() != 0) {
+      output += 1;
+    }
+    if (leftWinch.get() != 0) {
+      output += 1;
+    }
+    if (rightWinch.get() != 0) {
+      output += 1;
     }
 
-    public int ClimbMotors() {
-        int output = 0;
-        if (pvcExtender.get() != 0) { output += 1; }
-        if (leftWinch.get() != 0) { output += 1; }
-        if (rightWinch.get() != 0) {output += 1; }
+    return output;
+  }
 
-        return output;
-    }
-
-
-
-    public static ClimbSubsystem getInstance() {
-        return INSTANCE;
-    }
-
+  public static ClimbSubsystem getInstance() {
+    return INSTANCE;
+  }
 }
-

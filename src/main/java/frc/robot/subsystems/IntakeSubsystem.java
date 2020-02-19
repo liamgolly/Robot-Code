@@ -10,62 +10,73 @@ import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-
 public class IntakeSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeID) ;
-    CANSparkMax intakeRotator = new CANSparkMax(intakeRotatorID, CANSparkMaxLowLevel.MotorType.kBrushless);
+  WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeID);
+  CANSparkMax intakeRotator =
+      new CANSparkMax(intakeRotatorID, CANSparkMaxLowLevel.MotorType.kBrushless);
 
-    Timer stalltimer = new Timer();
-    Timer endstalltimer = new Timer();
+  Timer stalltimer = new Timer();
+  Timer endstalltimer = new Timer();
 
-    boolean intakeStalling = false;
+  boolean intakeStalling = false;
 
-    private final static IntakeSubsystem INSTANCE = new IntakeSubsystem();
+  private static final IntakeSubsystem INSTANCE = new IntakeSubsystem();
 
+  private IntakeSubsystem() {}
 
-    private IntakeSubsystem() {
+  public void moveIntake(int direction, double power) {
 
+    intakeRotator.set(direction * power);
+  }
+
+  public void activateIntake() {
+    intakeProtection();
+    if (!intakeStalling) {
+      intakeMotor.set(intakePower);
+    } else {
+      intakeMotor.set(-1 * intakePower);
     }
+  }
 
-    public void moveIntake(int direction, double power) {
+  public void disableIntake() {
+    intakeMotor.set(0);
+  }
 
-            intakeRotator.set(direction * power);
+  private void intakeProtection() {
+    if (Math.abs(intakeMotor.getStatorCurrent()) > intakeCurrentLimit) {
+      if (stalltimer.get() == 0) {
+        stalltimer.start();
+      }
+      endstalltimer.reset();
     }
-
-    public void activateIntake() {
-        intakeProtection();
-        if (!intakeStalling) { intakeMotor.set(intakePower); }
-        else { intakeMotor.set(-1 * intakePower); }
+    if (Math.abs(intakeMotor.getStatorCurrent()) < intakeCurrentLimit) {
+      if (endstalltimer.get() == 0) {
+        endstalltimer.start();
+      }
     }
-
-    public void disableIntake() {
-        intakeMotor.set(0);
+    if (stalltimer.get() > intakeStallTime) {
+      stalltimer.reset();
+      intakeStalling = true;
     }
-
-    private void intakeProtection() {
-        if (Math.abs(intakeMotor.getStatorCurrent()) > intakeCurrentLimit) {
-            if (stalltimer.get() == 0) { stalltimer.start(); }
-            endstalltimer.reset();
-        }
-        if (Math.abs(intakeMotor.getStatorCurrent()) < intakeCurrentLimit) { if (endstalltimer.get() == 0) { endstalltimer.start(); } }
-        if (stalltimer.get() > intakeStallTime) { stalltimer.reset(); intakeStalling = true; }
-        if (endstalltimer.get() > intakeUnstallTime) {endstalltimer.reset(); stalltimer.reset(); intakeStalling = false; }
-       
+    if (endstalltimer.get() > intakeUnstallTime) {
+      endstalltimer.reset();
+      stalltimer.reset();
+      intakeStalling = false;
     }
+  }
 
-
-    public int IntakeMotors() {
-        int output = 0;
-        if (intakeMotor.get() != 0) { output += 1; }
-        //if (intakeRotator.get() != 0) {output += 1; }
-
-        return output;
+  public int IntakeMotors() {
+    int output = 0;
+    if (intakeMotor.get() != 0) {
+      output += 1;
     }
+    // if (intakeRotator.get() != 0) {output += 1; }
 
-    public static IntakeSubsystem getInstance() {
-        return INSTANCE;
-    }
+    return output;
+  }
 
+  public static IntakeSubsystem getInstance() {
+    return INSTANCE;
+  }
 }
-
