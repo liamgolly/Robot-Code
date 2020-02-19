@@ -57,8 +57,8 @@ public final class Constants {
     public static final class ProtectionConstants {
         // Intake
         public static final int intakeCurrentLimit = 43;
-        public static final double intakeStallTime = 1;
-        public static final double intakeUnstallTime = 1;
+        public static final double intakeStallTime = 1.5;
+        public static final double intakeUnstallTime = .75;
 
         public static final double intakeRotatorPower = 0.3;
     }
@@ -75,7 +75,7 @@ public final class Constants {
     }
 
     public static final class SensorID {
-        public static final int hallSensorRotator = 0;
+        public static final int hallSensorTurretRotator = 0;
     }
 
     public static final class TurretIntakeConstants {

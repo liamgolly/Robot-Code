@@ -23,8 +23,8 @@ public class IntakeSubsystem extends SubsystemBase {
     boolean intakeStalling = false;
 
     private static final IntakeSubsystem INSTANCE = new IntakeSubsystem();
-
     private IntakeSubsystem() {}
+
 
     public void moveIntake(int direction, double power) {
 

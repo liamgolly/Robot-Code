@@ -29,7 +29,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private DrivetrainSubsystem() {}
 
     public void ArcadeDrive(double speed, double rotation) {
-        driveTrain.arcadeDrive(speed, rotation);
+        driveTrain.arcadeDrive(-speed, -rotation);
     }
 
     public void changeDriveMode() {
