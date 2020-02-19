@@ -1,9 +1,9 @@
-package frc.robot.commands;
+package frc.robot.commands.NonHICommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ClimbSubsystem;
 import frc.robot.subsystems.ColorWheelSubsystem;
-import frc.robot.subsystems.CurrentLimiterSubsystem;
+import frc.robot.subsystems.NonHISubsystems.CurrentLimiterSubsystem;
 import frc.robot.subsystems.DrivetrainSubsystem;
 import frc.robot.subsystems.HopperSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;

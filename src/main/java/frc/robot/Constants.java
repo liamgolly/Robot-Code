@@ -51,4 +51,9 @@ public final class Constants {
         public final static int colorWheelID = 13;
     }
 
+    public static final class SensorID {
+        public final static int hallSensorRotator = 0;
+
+    }
+
 }

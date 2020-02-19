@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="421844ee-7428-4873-a957-8e1457b63059" name="Default Changelist" comment="" />
+    <list default="true" id="3140b04d-38e6-4b56-8848-cd5484670344" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,9 +12,6 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Robot-Code" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -23,7 +20,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1Y0YXair3289ze1WYgYWxNkXqCQ" />
+  <component name="ProjectId" id="1Y0t9zUunq1zCpxHbnfMvELbUCh" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -31,38 +28,69 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../programming/robot/2020 Tshirt Cannon" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Robot-Code [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="421844ee-7428-4873-a957-8e1457b63059" name="Default Changelist" comment="" />
-      <created>1582081018487</created>
+      <changelist id="3140b04d-38e6-4b56-8848-cd5484670344" name="Default Changelist" comment="" />
+      <created>1582091191251</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1582081018487</updated>
+      <updated>1582091191251</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1582084647597">
+    <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582091215860">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582084647597" />
-    <state x="249" y="394" width="1682" height="1006" key="SettingsEditor" timestamp="1582083224506">
+    <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582091215860" />
+    <state width="2519" height="381" key="GridCell.Tab.0.bottom" timestamp="1582093696354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="249" y="394" width="1682" height="1006" key="SettingsEditor/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582083224506" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1582084733280">
+    <state width="2519" height="381" key="GridCell.Tab.0.bottom/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582093696354" />
+    <state width="2519" height="381" key="GridCell.Tab.0.center" timestamp="1582093696354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582084733280" />
+    <state width="2519" height="381" key="GridCell.Tab.0.center/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582093696354" />
+    <state width="2519" height="381" key="GridCell.Tab.0.left" timestamp="1582093696354">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2519" height="381" key="GridCell.Tab.0.left/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582093696354" />
+    <state width="2519" height="381" key="GridCell.Tab.0.right" timestamp="1582093696354">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2519" height="381" key="GridCell.Tab.0.right/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582093696354" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1582093670022">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-2560.0.2560.1400@0.0.2560.1400" timestamp="1582093670022" />
   </component>
   <component name="WpiLibVersionService">
-    <option name="lastChecked" value="20200218214409" />
+    <option name="lastChecked" value="20200218222825" />
   </component>
 </project>
