@@ -50,7 +50,6 @@ public class RobotContainer {
     SwitchDriveModeCommand m_switchDriveModeCommand =
             new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
-
     // Buttons
     JoystickButton activateIntakeButton =
             new JoystickButton(xboxController, activateIntakeButtonID);

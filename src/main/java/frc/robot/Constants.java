@@ -81,5 +81,4 @@ public final class Constants {
     public static final class TurretIntakeConstants {
         public static final double turretIntakePower = 0.3;
     }
-
 }
