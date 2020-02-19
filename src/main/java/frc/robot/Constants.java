@@ -26,10 +26,29 @@ public final class Constants {
     }
 
     public static final class MotorID {
+        //Drivetrain
         public final static int leftMotor1ID = 0;
         public final static int leftMotor2ID = 1;
         public final static int rightMotor1ID = 2;
         public final static int rightMotor2ID = 3;
+
+        //Climb
+        public final static int pvcExtenderID = 4;
+        public final static int leftWinchID = 5;
+        public final static int rightWinchID = 6;
+
+        //Turret Assembly
+        public final static int turretRotatorID = 7;
+        public final static int shooterID = 8;
+
+        //Ball transportation
+        public final static int intakeID = 9;
+        public final static int intakeRotatorID = 10;
+        public final static int hopperID = 11;
+        public final static int turretIntakeID = 12;
+
+        //Color wheel
+        public final static int colorWheelID = 13;
     }
 
 }
