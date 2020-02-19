@@ -53,7 +53,7 @@ public class IntakeSubsystem extends SubsystemBase {
         if (endstalltimer.get() > intakeUnstallTime) {endstalltimer.reset(); stalltimer.reset(); intakeStalling = false; }
        
     }
-gitk
+
 
     public int IntakeMotors() {
         int output = 0;
