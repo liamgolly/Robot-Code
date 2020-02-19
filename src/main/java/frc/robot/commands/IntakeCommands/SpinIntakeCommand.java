@@ -19,7 +19,7 @@ public class SpinIntakeCommand extends CommandBase {
 
     @Override
     public void execute() {
-
+        intakeSubsystem.activateIntake();
     }
 
     @Override
@@ -30,6 +30,7 @@ public class SpinIntakeCommand extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
+        intakeSubsystem.disableIntake();
 
     }
 }

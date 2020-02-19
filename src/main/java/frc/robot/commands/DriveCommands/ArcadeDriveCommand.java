@@ -16,6 +16,8 @@ public class ArcadeDriveCommand extends CommandBase {
     Joystick m_rotateStick;
 
 
+
+
     public ArcadeDriveCommand(DrivetrainSubsystem drivetrainSubsystem, Joystick XboxController, Joystick MoveStick, Joystick RotateStick) {
         m_xboxController = XboxController;
         m_moveStick = MoveStick;
@@ -33,14 +35,18 @@ public class ArcadeDriveCommand extends CommandBase {
 
     @Override
     public void execute() {
-        switch (driveMode) {
+
+        
+        switch (DrivetrainSubsystem.drivemode) {
             case 1:
-                if (m_xboxController.getRawAxis(xboxBrakeAxis) < m_xboxController.getRawAxis(xboxAccelerateAxis)) { drivetrainSubsystem.arcadeDrive(m_xboxController.getRawAxis(xboxAccelerateAxis)-m_xboxController.getRawAxis(xboxBrakeAxis) , m_xboxController.getRawAxis(xboxRotateAxis)); }
-                else { drivetrainSubsystem.arcadeDrive(m_xboxController.getRawAxis(xboxAccelerateAxis)-m_xboxController.getRawAxis(xboxBrakeAxis) , -m_xboxController.getRawAxis(xboxRotateAxis)); }
+                if (m_xboxController.getRawAxis(xboxBrakeAxis) <= m_xboxController.getRawAxis(xboxAccelerateAxis)) { drivetrainSubsystem.ArcadeDrive(m_xboxController.getRawAxis(xboxAccelerateAxis)-m_xboxController.getRawAxis(xboxBrakeAxis) , m_xboxController.getRawAxis(xboxRotateAxis) * .9); }
+                else { drivetrainSubsystem.ArcadeDrive(m_xboxController.getRawAxis(xboxAccelerateAxis)-m_xboxController.getRawAxis(xboxBrakeAxis) , -(m_xboxController.getRawAxis(xboxRotateAxis) * .9)); }
                 break;
             case 2:
-                drivetrainSubsystem.arcadeDrive(m_moveStick.getX(), m_rotateStick.getZ());
+                drivetrainSubsystem.ArcadeDrive(m_moveStick.getRawAxis(flightStickMoveAxis), m_rotateStick.getRawAxis(flightStickRotateAxis));
         }
+        
+        
 
     }
 

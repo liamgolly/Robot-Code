@@ -10,19 +10,15 @@ package frc.robot;
 
 public final class Constants {
 
-    public static final class robotMovementConstants {
-        //1: Forza, 2: CrabwalkBananna
-        public final static int driveMode = 1;
-
-        public final static int xboxAccelerateAxis = 5;
-        public final static int xboxBrakeAxis = 6;
-        public final static int xboxRotateAxis = 0;
-    }
-
     public static final class ControlPorts {
         public final static int controllerPort = 0;
         public final static int moveJoystickPort = 1;
         public final static int rotateJoystickPort = 2;
+    }
+
+    public static final class intakeConstants {
+        public final static double intakePower = 0.45;
+        public final static int activateIntakeButtonID = 3;
     }
 
     public static final class MotorID {
@@ -49,6 +45,27 @@ public final class Constants {
 
         //Color wheel
         public final static int colorWheelID = 13;
+    }
+
+    public static final class ProtectionConstants {
+        //Intake
+        public final static int intakeCurrentLimit = 43;
+        public final static double intakeStallTime = 1;
+        public final static double intakeUnstallTime = 1;
+
+        public final static double intakeRotatorPower = 0.3;
+
+    }
+
+    public static final class robotMovementConstants {
+        public final static int changeDriveModeButtonID = 1;
+
+        public final static int xboxAccelerateAxis = 3;
+        public final static int xboxBrakeAxis = 2;
+        public final static int xboxRotateAxis = 0;
+
+        public final static int flightStickMoveAxis = 1;
+        public final static int flightStickRotateAxis = 0;
     }
 
     public static final class SensorID {

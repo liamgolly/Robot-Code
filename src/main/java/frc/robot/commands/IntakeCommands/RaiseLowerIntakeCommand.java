@@ -1,30 +1,33 @@
-package frc.robot.commands.NonHICommands;
+package frc.robot.commands.IntakeCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.IntakeSubsystem;
 
+import static frc.robot.Constants.ProtectionConstants.*;
 
-public class IntakeProtectionCommand extends CommandBase {
+
+public class RaiseLowerIntakeCommand extends CommandBase {
     private final IntakeSubsystem intakeSubsystem;
 
-    public IntakeProtectionCommand(IntakeSubsystem intakeSubsystem) {
+    //1 is raised, 2 is lowered
+    int State = 1;
+
+    public RaiseLowerIntakeCommand(IntakeSubsystem intakeSubsystem) {
         this.intakeSubsystem = intakeSubsystem;
         addRequirements(intakeSubsystem);
     }
 
     @Override
-    public void initialize() {
-
-    }
+    public void initialize() { }
 
     @Override
     public void execute() {
-        intakeSubsystem.intakeProtection();
+        intakeSubsystem.moveIntake(State, intakeRotatorPower);
     }
 
     @Override
     public boolean isFinished() {
-        // TODO: Make this return true when this Command no longer needs to run execute()
+
         return false;
     }
 

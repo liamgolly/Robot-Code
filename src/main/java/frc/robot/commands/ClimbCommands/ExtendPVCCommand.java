@@ -1,15 +1,15 @@
-package frc.robot.commands.IntakeCommands;
+package frc.robot.commands.ClimbCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
 
 
-public class RaiseIntakeCommand extends CommandBase {
-    private final IntakeSubsystem intakeSubsystem;
+public class ExtendPVCCommand extends CommandBase {
+    private final ClimbSubsystem climbSubsystem;
 
-    public RaiseIntakeCommand(IntakeSubsystem intakeSubsystem) {
-        this.intakeSubsystem = intakeSubsystem;
-        addRequirements(intakeSubsystem);
+    public ExtendPVCCommand(ClimbSubsystem climbSubsystem) {
+        this.climbSubsystem = climbSubsystem;
+        addRequirements(climbSubsystem);
     }
 
     @Override
