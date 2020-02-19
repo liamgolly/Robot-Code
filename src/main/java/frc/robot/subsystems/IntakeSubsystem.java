@@ -9,10 +9,11 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 
 public class IntakeSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX intakeMotor = new WPI_TalonSRX(intakeID);
+    AlphaTalon intakeMotor = new AlphaTalon(intakeID);
     CANSparkMax intakeRotator =
             new CANSparkMax(intakeRotatorID, CANSparkMaxLowLevel.MotorType.kBrushless);
 

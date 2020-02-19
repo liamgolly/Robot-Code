@@ -4,10 +4,11 @@ import static frc.robot.Constants.MotorID.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 
 public class ColorWheelSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX colorWheelSpinner = new WPI_TalonSRX(colorWheelID);
+    AlphaTalon colorWheelSpinner = new AlphaTalon(colorWheelID);
 
     private static final ColorWheelSubsystem INSTANCE = new ColorWheelSubsystem();
 

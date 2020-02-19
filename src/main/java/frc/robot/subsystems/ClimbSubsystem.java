@@ -4,12 +4,13 @@ import static frc.robot.Constants.MotorID.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 
 public class ClimbSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX pvcExtender = new WPI_TalonSRX(pvcExtenderID);
-    WPI_TalonSRX leftWinch = new WPI_TalonSRX(leftWinchID);
-    WPI_TalonSRX rightWinch = new WPI_TalonSRX(rightWinchID);
+    AlphaTalon pvcExtender = new AlphaTalon(pvcExtenderID);
+    AlphaTalon leftWinch = new AlphaTalon(leftWinchID);
+    AlphaTalon rightWinch = new AlphaTalon(rightWinchID);
 
     private static final ClimbSubsystem INSTANCE = new ClimbSubsystem();
 

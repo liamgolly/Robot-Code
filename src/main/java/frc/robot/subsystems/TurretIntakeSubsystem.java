@@ -1,24 +1,24 @@
 package frc.robot.subsystems;
 
 import static frc.robot.Constants.MotorID.*;
+import static frc.robot.Constants.TurretIntakeConstants.*;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 
 public class TurretIntakeSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX turretIntakeMotor = new WPI_TalonSRX(turretIntakeID);
+    AlphaTalon turretIntakeMotor = new AlphaTalon(turretIntakeID);
     private static final TurretIntakeSubsystem INSTANCE = new TurretIntakeSubsystem();
 
     private TurretIntakeSubsystem() {}
 
-    public int TurretIntakeMotors() {
-        int output = 0;
-        if (turretIntakeMotor.get() != 0) {
-            output += 1;
-        }
+    public void activateTurretIntake() {
+        turretIntakeMotor.set(turretIntakePower);
+    }
 
-        return output;
+    public void deactivateTurretIntake() {
+        turretIntakeMotor.set(0);
     }
 
     public static TurretIntakeSubsystem getInstance() {

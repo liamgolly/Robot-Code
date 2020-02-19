@@ -19,6 +19,10 @@ public final class Constants {
         public static final double currentLimit = 100;
     }
 
+    public static final class HopperConstants {
+        public static final double hopperPower = 0.3;
+    }
+
     public static final class intakeConstants {
         public static final double intakePower = 0.45;
         public static final int activateIntakeButtonID = 3;
@@ -73,4 +77,9 @@ public final class Constants {
     public static final class SensorID {
         public static final int hallSensorRotator = 0;
     }
+
+    public static final class TurretIntakeConstants {
+        public static final double turretIntakePower = 0.3;
+    }
+
 }

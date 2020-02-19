@@ -1,25 +1,26 @@
 package frc.robot.subsystems;
 
+import static frc.robot.Constants.HopperConstants.*;
 import static frc.robot.Constants.MotorID.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 
 public class HopperSubsystem extends SubsystemBase {
 
-    WPI_TalonSRX hopperMotor = new WPI_TalonSRX(hopperID);
+    AlphaTalon hopperMotor = new AlphaTalon(hopperID);
 
     private static final HopperSubsystem INSTANCE = new HopperSubsystem();
 
     private HopperSubsystem() {}
 
-    public int HopperMotors() {
-        int output = 0;
-        if (hopperMotor.get() != 0) {
-            output += 1;
-        }
+    public void activateHopper() {
+        hopperMotor.set(hopperPower);
+    }
 
-        return output;
+    public void deactiveHopper() {
+        hopperMotor.set(0);
     }
 
     public static HopperSubsystem getInstance() {

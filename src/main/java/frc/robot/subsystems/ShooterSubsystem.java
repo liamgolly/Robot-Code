@@ -4,10 +4,11 @@ import static frc.robot.Constants.MotorID.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 
 public class ShooterSubsystem extends SubsystemBase {
 
-    WPI_TalonFX shooter = new WPI_TalonFX(shooterID);
+    AlphaTalon shooter = new AlphaTalon(shooterID);
     private static final ShooterSubsystem INSTANCE = new ShooterSubsystem();
 
     private ShooterSubsystem() {}

@@ -50,9 +50,6 @@ public class RobotContainer {
     SwitchDriveModeCommand m_switchDriveModeCommand =
             new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
-    SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
-    SwitchDriveModeCommand m_switchDriveModeCommand =
-            new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
     // Buttons
     JoystickButton activateIntakeButton =
@@ -68,8 +65,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
 
         // Default Commands
-        // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
-        // //how the hell do we do this?
+        CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         DrivetrainSubsystem.getInstance()
                 .setDefaultCommand(
                         new ArcadeDriveCommand(
