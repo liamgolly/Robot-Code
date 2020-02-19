@@ -24,71 +24,75 @@ import frc.robot.subsystems.NonHISubsystems.CurrentLimiterSubsystem;
 
 public class RobotContainer {
 
-  // Controllers and Sensors
-  Joystick xboxController = new Joystick(controllerPort);
-  Joystick moveFlightStick = new Joystick(moveJoystickPort);
-  Joystick rotateFlightStick = new Joystick(rotateJoystickPort);
+    // Controllers and Sensors
+    Joystick xboxController = new Joystick(controllerPort);
+    Joystick moveFlightStick = new Joystick(moveJoystickPort);
+    Joystick rotateFlightStick = new Joystick(rotateJoystickPort);
 
-  DigitalInput hallRotator = new DigitalInput(hallSensorRotator);
+    DigitalInput hallRotator = new DigitalInput(hallSensorRotator);
 
-  // Subsystem Imports
-  ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
-  ColorWheelSubsystem m_colorWheelSubsystem = ColorWheelSubsystem.getInstance();
-  CurrentLimiterSubsystem m_currentLimiterSubsystem = CurrentLimiterSubsystem.getInstance();
-  DrivetrainSubsystem m_driveTrainSubsystem = DrivetrainSubsystem.getInstance();
-  HopperSubsystem m_hopperSubsystem = HopperSubsystem.getInstance();
-  IntakeSubsystem m_intakeSubsystem = IntakeSubsystem.getInstance();
-  ShooterSubsystem m_shooterSubsystem = ShooterSubsystem.getInstance();
-  TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
-  TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
+    // Subsystem Imports
+    ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
+    ColorWheelSubsystem m_colorWheelSubsystem = ColorWheelSubsystem.getInstance();
+    CurrentLimiterSubsystem m_currentLimiterSubsystem = CurrentLimiterSubsystem.getInstance();
+    DrivetrainSubsystem m_driveTrainSubsystem = DrivetrainSubsystem.getInstance();
+    HopperSubsystem m_hopperSubsystem = HopperSubsystem.getInstance();
+    IntakeSubsystem m_intakeSubsystem = IntakeSubsystem.getInstance();
+    ShooterSubsystem m_shooterSubsystem = ShooterSubsystem.getInstance();
+    TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
+    TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
 
-  // Command Imports
-  BrownoutProtectionCommand m_brownoutProtectionCommand =
-      new BrownoutProtectionCommand(
-          m_climbSubsystem,
-          m_colorWheelSubsystem,
-          m_currentLimiterSubsystem,
-          m_driveTrainSubsystem,
-          m_hopperSubsystem,
-          m_intakeSubsystem,
-          m_shooterSubsystem,
-          m_turretIntakeSubsystem,
-          m_turretRotatorSubsystem);
+    // Command Imports
+    BrownoutProtectionCommand m_brownoutProtectionCommand =
+            new BrownoutProtectionCommand(
+                    m_climbSubsystem,
+                    m_colorWheelSubsystem,
+                    m_currentLimiterSubsystem,
+                    m_driveTrainSubsystem,
+                    m_hopperSubsystem,
+                    m_intakeSubsystem,
+                    m_shooterSubsystem,
+                    m_turretIntakeSubsystem,
+                    m_turretRotatorSubsystem);
 
-  SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
-  SwitchDriveModeCommand m_switchDriveModeCommand =
-      new SwitchDriveModeCommand(m_driveTrainSubsystem);
+    SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
+    SwitchDriveModeCommand m_switchDriveModeCommand =
+            new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
-  // Buttons
-  JoystickButton activateIntakeButton = new JoystickButton(xboxController, activateIntakeButtonID);
-  JoystickButton changeDriveModeButton =
-      new JoystickButton(xboxController, changeDriveModeButtonID);
+    // Buttons
+    JoystickButton activateIntakeButton =
+            new JoystickButton(xboxController, activateIntakeButtonID);
+    JoystickButton changeDriveModeButton =
+            new JoystickButton(xboxController, changeDriveModeButtonID);
 
-  public RobotContainer() {
+    public RobotContainer() {
 
-    configureButtonBindings();
-  }
+        configureButtonBindings();
+    }
 
-  private void configureButtonBindings() {
+    private void configureButtonBindings() {
 
-    // Default Commands
-    // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
-    // //how the hell do we do this?
-    DrivetrainSubsystem.getInstance()
-        .setDefaultCommand(
-            new ArcadeDriveCommand(
-                m_driveTrainSubsystem, xboxController, moveFlightStick, rotateFlightStick));
+        // Default Commands
+        // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
+        // //how the hell do we do this?
+        DrivetrainSubsystem.getInstance()
+                .setDefaultCommand(
+                        new ArcadeDriveCommand(
+                                m_driveTrainSubsystem,
+                                xboxController,
+                                moveFlightStick,
+                                rotateFlightStick));
 
-    // Held Buttons
-    activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
+        // Held Buttons
+        activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
 
-    // Pressed Buttons
-    changeDriveModeButton.whenPressed(m_switchDriveModeCommand);
-  }
+        // Pressed Buttons
+        changeDriveModeButton.whenPressed(m_switchDriveModeCommand);
+    }
 
-  /*
-      Use this to pass the autonomous command to the main {@link Robot} class.
-      @return the command to run in autonomous
-      public Command getAutonomousCommand() {}
-  */
+    /*
+        Use this to pass the autonomous command to the main {@link Robot} class.
+        @return the command to run in autonomous
+        public Command getAutonomousCommand() {}
+    */
 }

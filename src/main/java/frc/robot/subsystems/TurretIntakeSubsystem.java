@@ -7,21 +7,21 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class TurretIntakeSubsystem extends SubsystemBase {
 
-  WPI_TalonSRX turretIntakeMotor = new WPI_TalonSRX(turretIntakeID);
-  private static final TurretIntakeSubsystem INSTANCE = new TurretIntakeSubsystem();
+    WPI_TalonSRX turretIntakeMotor = new WPI_TalonSRX(turretIntakeID);
+    private static final TurretIntakeSubsystem INSTANCE = new TurretIntakeSubsystem();
 
-  private TurretIntakeSubsystem() {}
+    private TurretIntakeSubsystem() {}
 
-  public int TurretIntakeMotors() {
-    int output = 0;
-    if (turretIntakeMotor.get() != 0) {
-      output += 1;
+    public int TurretIntakeMotors() {
+        int output = 0;
+        if (turretIntakeMotor.get() != 0) {
+            output += 1;
+        }
+
+        return output;
     }
 
-    return output;
-  }
-
-  public static TurretIntakeSubsystem getInstance() {
-    return INSTANCE;
-  }
+    public static TurretIntakeSubsystem getInstance() {
+        return INSTANCE;
+    }
 }
