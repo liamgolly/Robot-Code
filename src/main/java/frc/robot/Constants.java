@@ -16,7 +16,7 @@ public final class Constants {
     }
 
     public static final class CurrentLimitingConstants {
-        public final static double currentLimit = 100;
+        public static final double currentLimit = 100;
     }
 
     public static final class intakeConstants {

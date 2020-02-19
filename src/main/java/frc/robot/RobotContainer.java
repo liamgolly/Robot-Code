@@ -42,11 +42,13 @@ public class RobotContainer {
     TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
     TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
 
-  //Command Imports
-  BrownoutProtectionCommand m_brownoutProtectionCommand = new BrownoutProtectionCommand( m_currentLimiterSubsystem );
- 
-  SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
-  SwitchDriveModeCommand m_switchDriveModeCommand = new SwitchDriveModeCommand(m_driveTrainSubsystem);
+    // Command Imports
+    BrownoutProtectionCommand m_brownoutProtectionCommand =
+            new BrownoutProtectionCommand(m_currentLimiterSubsystem);
+
+    SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
+    SwitchDriveModeCommand m_switchDriveModeCommand =
+            new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
     SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
     SwitchDriveModeCommand m_switchDriveModeCommand =
