@@ -1,0 +1,15 @@
+name: Autoformat
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Google Java Format
+      uses: axel-op/googlejavaformat-action@v2.0.0
+      with:
+        args: "--skip-removing-unused-imports --replace"
