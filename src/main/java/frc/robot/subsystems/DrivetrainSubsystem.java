@@ -21,7 +21,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
     WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(rightMotor1ID);
     WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(rightMotor2ID);
     DriveTrain driveTrain =
-             new DriveTrain(
+            new DriveTrain(
                     new SpeedControllerGroup(leftMotor1, leftMotor2),
                     new SpeedControllerGroup(rightMotor1, rightMotor2));
 
