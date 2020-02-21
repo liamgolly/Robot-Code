@@ -33,16 +33,16 @@ public final class Constants {
         public static final int leftMotor1ID = 0;
         public static final int leftMotor2ID = 1;
         public static final int rightMotor1ID = 2;
-        public static final int rightMotor2ID = 3;
+        public static final int rightMotor2ID = 5;
 
         // Climb
         public static final int pvcExtenderID = 4;
-        public static final int leftWinchID = 5;
+        public static final int leftWinchID = 55;
         public static final int rightWinchID = 6;
 
         // Turret Assembly
         public static final int turretRotatorID = 7;
-        public static final int shooterID = 8;
+        public static final int shooterID = 9;
 
         // Ball transportation
         public static final int intakeID = 9;
@@ -76,9 +76,16 @@ public final class Constants {
 
     public static final class SensorID {
         public static final int hallSensorTurretRotator = 0;
+        public static final int hallSensorIntakeRotator = 1;
+    }
+
+    public static final class ShooterConstants {
+        public static final double shooterPower = 1;
+        public static final int shootButtonID = 6;
     }
 
     public static final class TurretIntakeConstants {
         public static final double turretIntakePower = 0.3;
     }
+
 }

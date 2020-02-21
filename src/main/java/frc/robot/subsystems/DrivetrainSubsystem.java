@@ -11,10 +11,13 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.classes.DriveTrain;
 
+import java.io.Console;
+
 public class DrivetrainSubsystem extends SubsystemBase {
 
     // 1: Forza, 2: CrabwalkBananna
     public static int drivemode = 1;
+    private boolean quickTurnEnabled = false;
 
     WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(leftMotor1ID);
     WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(leftMotor2ID);
@@ -30,7 +33,29 @@ public class DrivetrainSubsystem extends SubsystemBase {
     private DrivetrainSubsystem() {}
 
     public void ArcadeDrive(double speed, double rotation) {
-        driveTrain.arcadeDrive(-speed, -rotation);
+        driveTrain.arcadeDrive(speed, rotation);
+
+//        leftMotor1.configContinuousCurrentLimit(38);
+//        leftMotor2.configContinuousCurrentLimit(38);
+//        rightMotor1.configContinuousCurrentLimit(38);
+//        rightMotor2.configContinuousCurrentLimit(38);
+
+
+//        System.out.println("Left Motor 1:  " + leftMotor1.getStatorCurrent());
+//        System.out.println("Left Motor 2: " + leftMotor2.getStatorCurrent());
+//
+//        System.out.println("Right Motor 1: " + rightMotor1.getStatorCurrent());
+//        System.out.println("Right Motor 2: " + rightMotor2.getStatorCurrent());
+
+
+    }
+
+    public void CurvatureDrive(double speed, double rotation) {
+        driveTrain.curvatureDrive(speed, rotation,  quickTurnEnabled);
+    }
+
+    public void quickTurn() {
+        quickTurnEnabled = !quickTurnEnabled;
     }
 
     public void changeDriveMode() {
@@ -39,7 +64,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
         } else {
             drivemode = 1;
         }
-    }
 
     public static DrivetrainSubsystem getInstance() {
         return INSTANCE;

@@ -1,13 +1,19 @@
 package frc.robot.commands.DriveCommands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
+import static frc.robot.Constants.robotMovementConstants.*;
+
+
 public class CurvatureDriveCommand extends CommandBase {
     private final DrivetrainSubsystem drivetrainSubsystem;
+    Joystick controller;
 
-    public CurvatureDriveCommand(DrivetrainSubsystem drivetrainSubsystem) {
+    public CurvatureDriveCommand(DrivetrainSubsystem drivetrainSubsystem, Joystick XboxController) {
         this.drivetrainSubsystem = drivetrainSubsystem;
+        controller = XboxController;
         addRequirements(drivetrainSubsystem);
     }
 
@@ -15,7 +21,9 @@ public class CurvatureDriveCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {
+        drivetrainSubsystem.CurvatureDrive(controller.getRawAxis(xboxAccelerateAxis) - controller.getRawAxis(xboxBrakeAxis), controller.getRawAxis(xboxRotateAxis));
+    }
 
     @Override
     public boolean isFinished() {

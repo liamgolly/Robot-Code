@@ -14,6 +14,6 @@ public class AlphaTalon extends WPI_TalonSRX {
     @Override
     public void set(double speed) {
         super.set(speed);
-        CurrentHolderClass.getInstance().motorCurrents[device] = super.getStatorCurrent();
+        //CurrentHolderClass.getInstance().motorCurrents[device] = super.getStatorCurrent();
     }
 }
