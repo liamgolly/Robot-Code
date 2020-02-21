@@ -23,7 +23,7 @@ public class BrownoutProtectionCommand extends CommandBase {
     @Override
     public void execute() {
         double current = Arrays.stream(CurrentHolderClass.getInstance().currentMotorCurrents).sum();
-        CurrentHolderClass.getInstance().historicalMotorCurrents.add(CurrentHolderClass.getInstance().currentMotorCurrents);
+//        CurrentHolderClass.getInstance().historicalMotorCurrents.(CurrentHolderClass.getInstance().currentMotorCurrents);
         currentLimiterSubsystem.LimitCurrent(current);
     }
 

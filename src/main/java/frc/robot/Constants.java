@@ -10,9 +10,8 @@ package frc.robot;
 public final class Constants {
 
     public static final class ControlPorts {
-        public static final int controllerPort = 0;
-        public static final int moveJoystickPort = 1;
-        public static final int rotateJoystickPort = 2;
+        public static final int wheelPort = 0;
+        public static final int pedalPort = 1;
     }
 
     public static final class CurrentLimitingConstants {
@@ -33,7 +32,7 @@ public final class Constants {
         public static final int leftMotor1ID = 0;
         public static final int leftMotor2ID = 1;
         public static final int rightMotor1ID = 2;
-        public static final int rightMotor2ID = 3;
+        public static final int rightMotor2ID = 5;
 
         // Climb
         public static final int pvcExtenderID = 4;

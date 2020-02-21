@@ -8,7 +8,6 @@
 package frc.robot;
 
 import static frc.robot.Constants.ControlPorts.*;
-import static frc.robot.Constants.SensorID.*;
 import static frc.robot.Constants.intakeConstants.*;
 import static frc.robot.Constants.robotMovementConstants.*;
 
@@ -25,11 +24,10 @@ import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
 public class RobotContainer {
 
     // Controllers and Sensors
-    Joystick xboxController = new Joystick(controllerPort);
-    Joystick moveFlightStick = new Joystick(moveJoystickPort);
-    Joystick rotateFlightStick = new Joystick(rotateJoystickPort);
+    Joystick wheel = new Joystick(wheelPort);
+    Joystick pedals = new Joystick(pedalPort);
 
-    DigitalInput hallRotator = new DigitalInput(hallSensorRotator);
+//    DigitalInput hallRotator = new DigitalInput(hallSensorRotator);
 
     // Subsystem Imports
     ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
@@ -52,9 +50,9 @@ public class RobotContainer {
 
     // Buttons
     JoystickButton activateIntakeButton =
-            new JoystickButton(xboxController, activateIntakeButtonID);
+            new JoystickButton(wheel, activateIntakeButtonID);
     JoystickButton changeDriveModeButton =
-            new JoystickButton(xboxController, changeDriveModeButtonID);
+            new JoystickButton(wheel, changeDriveModeButtonID);
 
     public RobotContainer() {
 
@@ -63,15 +61,14 @@ public class RobotContainer {
 
     private void configureButtonBindings() {
 
-        // Default Commands
+        // Default Commandsa
         CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         DrivetrainSubsystem.getInstance()
                 .setDefaultCommand(
                         new ArcadeDriveCommand(
                                 m_driveTrainSubsystem,
-                                xboxController,
-                                moveFlightStick,
-                                rotateFlightStick));
+                                wheel,
+                                pedals));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);

@@ -32,6 +32,10 @@ public class DrivetrainSubsystem extends SubsystemBase {
         driveTrain.arcadeDrive(-speed, -rotation);
     }
 
+    public void CurvatureDrive(double speed, double rotation) {
+        driveTrain.curvatureDrive(speed, rotation, false);
+    }
+
     public void changeDriveMode() {
         if (DrivetrainSubsystem.drivemode == 1) {
             drivemode = 2;
