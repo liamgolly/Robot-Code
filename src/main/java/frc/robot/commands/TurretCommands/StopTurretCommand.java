@@ -3,7 +3,6 @@ package frc.robot.commands.TurretCommands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretRotatorSubsystem;
 
-
 public class StopTurretCommand extends CommandBase {
     private final TurretRotatorSubsystem turretRotatorSubsystem;
 
@@ -13,9 +12,7 @@ public class StopTurretCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() {
-
-    }
+    public void initialize() {}
 
     @Override
     public void execute() {
@@ -28,7 +25,5 @@ public class StopTurretCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {
-
-    }
+    public void end(boolean interrupted) {}
 }

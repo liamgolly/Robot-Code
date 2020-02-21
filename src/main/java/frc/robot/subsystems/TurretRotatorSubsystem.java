@@ -17,12 +17,7 @@ public class TurretRotatorSubsystem extends SubsystemBase {
 
     private TurretRotatorSubsystem() {}
 
-    public void zeroAngle() {
-        
-
-    }
-
-
+    public void zeroAngle() {}
 
     public static TurretRotatorSubsystem getInstance() {
         return INSTANCE;

@@ -3,7 +3,6 @@ package frc.robot.commands.DriveCommands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-
 public class CurvatureDriveCommand extends CommandBase {
     private final DrivetrainSubsystem drivetrainSubsystem;
 
@@ -13,14 +12,10 @@ public class CurvatureDriveCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() {
-
-    }
+    public void initialize() {}
 
     @Override
-    public void execute() {
-
-    }
+    public void execute() {}
 
     @Override
     public boolean isFinished() {
@@ -29,7 +24,5 @@ public class CurvatureDriveCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {
-
-    }
+    public void end(boolean interrupted) {}
 }
