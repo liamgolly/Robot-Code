@@ -13,9 +13,7 @@ public class ArcadeDriveCommand extends CommandBase {
     Joystick m_pedals;
 
     public ArcadeDriveCommand(
-            DrivetrainSubsystem drivetrainSubsystem,
-            Joystick wheel,
-            Joystick pedals) {
+            DrivetrainSubsystem drivetrainSubsystem, Joystick wheel, Joystick pedals) {
         m_wheel = wheel;
         m_pedals = pedals;
 
@@ -29,12 +27,10 @@ public class ArcadeDriveCommand extends CommandBase {
     @Override
     public void execute() {
         double speed = -(((m_pedals.getRawAxis(1) + 1) / 2) - ((m_pedals.getRawAxis(0) + 1) / 2));
-        drivetrainSubsystem.ArcadeDrive(
-                speed,
-                -m_wheel.getRawAxis(0));
-//        drivetrainSubsystem.CurvatureDrive(
-//                -speed,
-//                -m_wheel.getRawAxis(0));
+        drivetrainSubsystem.ArcadeDrive(speed, -m_wheel.getRawAxis(0));
+        //        drivetrainSubsystem.CurvatureDrive(
+        //                -speed,
+        //                -m_wheel.getRawAxis(0));
     }
 
     @Override

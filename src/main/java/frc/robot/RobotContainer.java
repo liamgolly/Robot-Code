@@ -27,7 +27,7 @@ public class RobotContainer {
     Joystick wheel = new Joystick(wheelPort);
     Joystick pedals = new Joystick(pedalPort);
 
-//    DigitalInput hallRotator = new DigitalInput(hallSensorRotator);
+    //    DigitalInput hallRotator = new DigitalInput(hallSensorRotator);
 
     // Subsystem Imports
     ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
@@ -49,10 +49,8 @@ public class RobotContainer {
             new SwitchDriveModeCommand(m_driveTrainSubsystem);
 
     // Buttons
-    JoystickButton activateIntakeButton =
-            new JoystickButton(wheel, activateIntakeButtonID);
-    JoystickButton changeDriveModeButton =
-            new JoystickButton(wheel, changeDriveModeButtonID);
+    JoystickButton activateIntakeButton = new JoystickButton(wheel, activateIntakeButtonID);
+    JoystickButton changeDriveModeButton = new JoystickButton(wheel, changeDriveModeButtonID);
 
     public RobotContainer() {
 
@@ -64,11 +62,7 @@ public class RobotContainer {
         // Default Commandsa
         CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         DrivetrainSubsystem.getInstance()
-                .setDefaultCommand(
-                        new ArcadeDriveCommand(
-                                m_driveTrainSubsystem,
-                                wheel,
-                                pedals));
+                .setDefaultCommand(new ArcadeDriveCommand(m_driveTrainSubsystem, wheel, pedals));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
