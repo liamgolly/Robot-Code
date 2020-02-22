@@ -9,9 +9,23 @@ public class DriveTrain extends DifferentialDrive {
         super(leftMotor, rightMotor);
     }
 
-    @Override
-    public void arcadeDrive(double power, double rotation) {
-        super.arcadeDrive(power, rotation);
+
+    double zeroAngle;
+    public void arcadeDriveStraight(double power, double rotation, double angle) {
+        if(Math.abs(rotation) > .1) {
+            super.arcadeDrive(power, rotation);
+            zeroAngle = 0;
+        }
+        else {
+            if (zeroAngle == 0) { zeroAngle = angle; }
+            if (angle > zeroAngle) {
+                super.arcadeDrive(power, -.35);
+            }
+            if (angle < zeroAngle) {
+                super.arcadeDrive(power, .35);
+            }
+        }
+
         // super.arcadeDrive(0, 0);
     }
 

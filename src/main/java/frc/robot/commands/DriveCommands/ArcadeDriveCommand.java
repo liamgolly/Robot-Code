@@ -2,6 +2,7 @@ package frc.robot.commands.DriveCommands;
 
 import static frc.robot.Constants.robotMovementConstants.*;
 
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -13,15 +14,18 @@ public class ArcadeDriveCommand extends CommandBase {
     Joystick m_xboxController;
     Joystick m_moveStick;
     Joystick m_rotateStick;
+    AHRS navx;
 
     public ArcadeDriveCommand(
             DrivetrainSubsystem drivetrainSubsystem,
             Joystick XboxController,
             Joystick MoveStick,
-            Joystick RotateStick) {
+            Joystick RotateStick,
+            AHRS NavX) {
         m_xboxController = XboxController;
         m_moveStick = MoveStick;
         m_rotateStick = RotateStick;
+        navx = NavX;
 
         this.drivetrainSubsystem = drivetrainSubsystem;
         addRequirements(drivetrainSubsystem);
@@ -40,18 +44,21 @@ public class ArcadeDriveCommand extends CommandBase {
                     drivetrainSubsystem.ArcadeDrive(
                             m_xboxController.getRawAxis(xboxAccelerateAxis)
                                     - m_xboxController.getRawAxis(xboxBrakeAxis),
-                            m_xboxController.getRawAxis(xboxRotateAxis) * .9);
+                            m_xboxController.getRawAxis(xboxRotateAxis) * .9,
+                            navx.getRawGyroZ());
                 } else {
                     drivetrainSubsystem.ArcadeDrive(
                             m_xboxController.getRawAxis(xboxAccelerateAxis)
                                     - m_xboxController.getRawAxis(xboxBrakeAxis),
-                            -(m_xboxController.getRawAxis(xboxRotateAxis) * .9));
+                            -(m_xboxController.getRawAxis(xboxRotateAxis) * .9),
+                            navx.getRawGyroZ());
                 }
                 break;
             case 2:
                 drivetrainSubsystem.ArcadeDrive(
                         -m_moveStick.getRawAxis(flightStickMoveAxis),
-                        m_rotateStick.getRawAxis(flightStickRotateAxis));
+                        m_rotateStick.getRawAxis(flightStickRotateAxis),
+                        navx.getRawGyroZ());
         }
     }
 

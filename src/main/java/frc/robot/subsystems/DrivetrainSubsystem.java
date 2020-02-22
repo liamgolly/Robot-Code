@@ -28,18 +28,9 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     private DrivetrainSubsystem() {}
 
-    public void ArcadeDrive(double speed, double rotation) {
-        driveTrain.arcadeDrive(speed, rotation);
-        //        leftMotor1.configContinuousCurrentLimit(38);
-        //        leftMotor2.configContinuousCurrentLimit(38);
-        //        rightMotor1.configContinuousCurrentLimit(38);
-        //        rightMotor2.configContinuousCurrentLimit(38);
+    public void ArcadeDrive(double speed, double rotation, double angle) {
+        driveTrain.arcadeDriveStraight(speed, rotation, angle);
 
-        //        System.out.println("Left Motor 1:  " + leftMotor1.getStatorCurrent());
-        //        System.out.println("Left Motor 2: " + leftMotor2.getStatorCurrent());
-        //
-        //        System.out.println("Right Motor 1: " + rightMotor1.getStatorCurrent());
-        //        System.out.println("Right Motor 2: " + rightMotor2.getStatorCurrent());
     }
 
     public void CurvatureDrive(double speed, double rotation) {
@@ -57,6 +48,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
             drivemode = 1;
         }
     }
+
 
     public void moveAuto(int strat, double rotation) {
 
@@ -84,6 +76,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
                 break;
         }
     }
+
 
     public static DrivetrainSubsystem getInstance() {
         return INSTANCE;

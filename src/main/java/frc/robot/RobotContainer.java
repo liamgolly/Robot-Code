@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.Autonomous.AutoBeginMovement;
 import frc.robot.commands.DriveCommands.ArcadeDriveCommand;
 import frc.robot.commands.DriveCommands.ChangeQuickTurnCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
@@ -72,7 +71,6 @@ public class RobotContainer {
     JoystickButton ShootButton = new JoystickButton(xboxController, shootButtonID);
     JoystickButton quickTurn = new JoystickButton(xboxController, 5);
 
-    JoystickButton testButton = new JoystickButton(xboxController, 8);
 
     Button intakeLowerLimitSwitch = new Button(() -> intakeLowerLimit.get());
     Button intakeUpperLimitSwitch = new Button(() -> intakeUpperLimit.get());
@@ -89,29 +87,18 @@ public class RobotContainer {
         CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         DrivetrainSubsystem.getInstance()
                 .setDefaultCommand(
-                        new ArcadeDriveCommand(
-                                m_driveTrainSubsystem,
-                                xboxController,
+                        new ArcadeDriveCommand(      //new CurvatureDriveCommand(
+                                m_driveTrainSubsystem,  //m_driveTrainSubsystem,
+                                xboxController,         //xboxController));
                                 moveFlightStick,
-                                rotateFlightStick));
-        //        DrivetrainSubsystem.getInstance()
-        //                .setDefaultCommand(
-        //                        new CurvatureDriveCommand(
-        //                                m_driveTrainSubsystem,
-        //                                xboxController));
+                                rotateFlightStick,
+                                NavX));
+
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
         ShootButton.whileHeld(m_shootTurretCommand, false);
-        testButton.whileHeld(
-                new AutoBeginMovement(
-                        m_driveTrainSubsystem,
-                        m_hopperSubsystem,
-                        m_intakeSubsystem,
-                        m_shooterSubsystem,
-                        m_turretIntakeSubsystem,
-                        m_turretRotatorSubsystem,
-                        NavX));
+
 
         // Pressed Buttons
         quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
