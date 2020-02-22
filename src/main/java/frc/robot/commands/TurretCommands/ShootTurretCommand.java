@@ -25,5 +25,7 @@ public class ShootTurretCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) { shooterSubsystem.stopShooter();}
+    public void end(boolean interrupted) {
+        shooterSubsystem.stopShooter();
+    }
 }

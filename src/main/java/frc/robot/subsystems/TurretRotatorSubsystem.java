@@ -21,8 +21,6 @@ public class TurretRotatorSubsystem extends SubsystemBase {
         turretRotator.setSelectedSensorPosition(0);
     }
 
-
-
     public static TurretRotatorSubsystem getInstance() {
         return INSTANCE;
     }

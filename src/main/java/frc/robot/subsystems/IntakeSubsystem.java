@@ -40,6 +40,7 @@ public class IntakeSubsystem extends SubsystemBase {
     public void moveIntake(int direction, double power) {
         intakeRotator.set(direction * power);
     }
+
     public void disableIntake() {
         intakeMotor.set(0);
         atLimit = true;
@@ -67,7 +68,6 @@ public class IntakeSubsystem extends SubsystemBase {
             intakeStalling = false;
         }
     }
-
 
     public static IntakeSubsystem getInstance() {
         return INSTANCE;

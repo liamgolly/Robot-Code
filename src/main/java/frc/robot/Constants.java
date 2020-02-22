@@ -10,8 +10,8 @@ package frc.robot;
 public final class Constants {
 
     public static final class AutonomousConstants {
-        //haha diameter of the wheels don't know it whatever close enough
-        public static final double DrivetrainEncoderInch = (Math.PI * 7.7 / 4096) ;
+        // haha diameter of the wheels don't know it whatever close enough
+        public static final double DrivetrainEncoderInch = (Math.PI * 7.7 / 4096);
     }
 
     public static final class ControlPorts {
@@ -93,5 +93,4 @@ public final class Constants {
     public static final class TurretIntakeConstants {
         public static final double turretIntakePower = 0.3;
     }
-
 }

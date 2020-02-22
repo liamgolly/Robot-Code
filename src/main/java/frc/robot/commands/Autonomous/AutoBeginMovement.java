@@ -9,7 +9,6 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.TurretIntakeSubsystem;
 import frc.robot.subsystems.TurretRotatorSubsystem;
 
-
 public class AutoBeginMovement extends CommandBase {
     private final DrivetrainSubsystem drivetrainSubsystem;
     private final HopperSubsystem hopperSubsystem;
@@ -21,7 +20,14 @@ public class AutoBeginMovement extends CommandBase {
 
     public static boolean taskCompleted = false;
 
-    public AutoBeginMovement(DrivetrainSubsystem drivetrainSubsystem, HopperSubsystem hopperSubsystem, IntakeSubsystem intakeSubsystem, ShooterSubsystem shooterSubsystem, TurretIntakeSubsystem turretIntakeSubsystem, TurretRotatorSubsystem turretRotatorSubsystem, AHRS NavX) {
+    public AutoBeginMovement(
+            DrivetrainSubsystem drivetrainSubsystem,
+            HopperSubsystem hopperSubsystem,
+            IntakeSubsystem intakeSubsystem,
+            ShooterSubsystem shooterSubsystem,
+            TurretIntakeSubsystem turretIntakeSubsystem,
+            TurretRotatorSubsystem turretRotatorSubsystem,
+            AHRS NavX) {
         this.drivetrainSubsystem = drivetrainSubsystem;
         this.hopperSubsystem = hopperSubsystem;
         this.intakeSubsystem = intakeSubsystem;
@@ -29,14 +35,20 @@ public class AutoBeginMovement extends CommandBase {
         this.turretIntakeSubsystem = turretIntakeSubsystem;
         this.turretRotatorSubsystem = turretRotatorSubsystem;
         this.navx = NavX;
-        addRequirements(drivetrainSubsystem, hopperSubsystem, intakeSubsystem, shooterSubsystem, turretIntakeSubsystem, turretRotatorSubsystem);
+        addRequirements(
+                drivetrainSubsystem,
+                hopperSubsystem,
+                intakeSubsystem,
+                shooterSubsystem,
+                turretIntakeSubsystem,
+                turretRotatorSubsystem);
     }
 
     @Override
     public void initialize() {
         navx.zeroYaw();
         drivetrainSubsystem.rightMotor1.setSelectedSensorPosition(0);
-        //d   rivetrainSubsystem.autostate = 1;
+        // d   rivetrainSubsystem.autostate = 1;
     }
 
     @Override
@@ -53,7 +65,9 @@ public class AutoBeginMovement extends CommandBase {
 
             case 2:
                 drivetrainSubsystem.moveAuto(2, navx.getRawGyroZ());
-                if(drivetrainSubsystem.autostate == 4) {taskCompleted = true; }
+                if (drivetrainSubsystem.autostate == 4) {
+                    taskCompleted = true;
+                }
                 break;
 
             case 3:
@@ -68,7 +82,5 @@ public class AutoBeginMovement extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {
-
-    }
+    public void end(boolean interrupted) {}
 }

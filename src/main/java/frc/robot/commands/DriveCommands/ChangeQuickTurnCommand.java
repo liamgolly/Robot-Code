@@ -4,9 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
-
-
-
 public class ChangeQuickTurnCommand extends CommandBase {
     private final DrivetrainSubsystem drivetrainSubsystem;
     Joystick controller;
@@ -18,7 +15,7 @@ public class ChangeQuickTurnCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() { }
+    public void initialize() {}
 
     @Override
     public void execute() {
@@ -28,13 +25,13 @@ public class ChangeQuickTurnCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-       if (done) {
-           done = false;
-           return true;
-       }
+        if (done) {
+            done = false;
+            return true;
+        }
         return false;
     }
 
     @Override
-    public void end(boolean interrupted) { }
+    public void end(boolean interrupted) {}
 }

@@ -30,21 +30,20 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public void ArcadeDrive(double speed, double rotation) {
         driveTrain.arcadeDrive(speed, rotation);
-//        leftMotor1.configContinuousCurrentLimit(38);
-//        leftMotor2.configContinuousCurrentLimit(38);
-//        rightMotor1.configContinuousCurrentLimit(38);
-//        rightMotor2.configContinuousCurrentLimit(38);
+        //        leftMotor1.configContinuousCurrentLimit(38);
+        //        leftMotor2.configContinuousCurrentLimit(38);
+        //        rightMotor1.configContinuousCurrentLimit(38);
+        //        rightMotor2.configContinuousCurrentLimit(38);
 
-
-//        System.out.println("Left Motor 1:  " + leftMotor1.getStatorCurrent());
-//        System.out.println("Left Motor 2: " + leftMotor2.getStatorCurrent());
-//
-//        System.out.println("Right Motor 1: " + rightMotor1.getStatorCurrent());
-//        System.out.println("Right Motor 2: " + rightMotor2.getStatorCurrent());
+        //        System.out.println("Left Motor 1:  " + leftMotor1.getStatorCurrent());
+        //        System.out.println("Left Motor 2: " + leftMotor2.getStatorCurrent());
+        //
+        //        System.out.println("Right Motor 1: " + rightMotor1.getStatorCurrent());
+        //        System.out.println("Right Motor 2: " + rightMotor2.getStatorCurrent());
     }
 
     public void CurvatureDrive(double speed, double rotation) {
-        driveTrain.curvatureDrive(speed, rotation,  quickTurnEnabled);
+        driveTrain.curvatureDrive(speed, rotation, quickTurnEnabled);
     }
 
     public void quickTurn() {
@@ -61,15 +60,15 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public void moveAuto(int strat, double rotation) {
 
-        switch(strat) {
+        switch (strat) {
             case 2:
-                switch(autostate) {
+                switch (autostate) {
                     case 1:
                     case 3:
                         driveTrain.arcadeDrive(.35, 0);
 
-                        if(rightMotor1.getSelectedSensorPosition() * DrivetrainEncoderInch > 48) {
-                            autostate ++;
+                        if (rightMotor1.getSelectedSensorPosition() * DrivetrainEncoderInch > 48) {
+                            autostate++;
                             rightMotor1.setSelectedSensorPosition(0);
                         }
                         break;
@@ -77,16 +76,16 @@ public class DrivetrainSubsystem extends SubsystemBase {
                     case 2:
                         System.out.println(rotation);
                         driveTrain.tankDrive(-0.3, .3);
-                        if (rotation > 170) { autostate++; }
+                        if (rotation > 170) {
+                            autostate++;
+                        }
                         break;
-
                 }
                 break;
         }
-
-
-
     }
 
-    public static DrivetrainSubsystem getInstance() { return INSTANCE; }
+    public static DrivetrainSubsystem getInstance() {
+        return INSTANCE;
+    }
 }

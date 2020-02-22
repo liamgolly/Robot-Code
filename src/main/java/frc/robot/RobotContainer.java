@@ -60,19 +60,16 @@ public class RobotContainer {
 
     SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
 
-    ShootTurretCommand m_shootTurretCommand =
-            new ShootTurretCommand((m_shooterSubsystem));
+    ShootTurretCommand m_shootTurretCommand = new ShootTurretCommand((m_shooterSubsystem));
     StopIntakeCommand m_stopIntakeCommand = new StopIntakeCommand(m_intakeSubsystem);
     StopTurretCommand m_stopTurretCommand = new StopTurretCommand(m_turretRotatorSubsystem);
-    
 
     // Buttons
     JoystickButton activateIntakeButton =
             new JoystickButton(xboxController, activateIntakeButtonID);
     JoystickButton changeDriveModeButton =
             new JoystickButton(xboxController, changeDriveModeButtonID);
-    JoystickButton ShootButton =
-            new JoystickButton(xboxController, shootButtonID);
+    JoystickButton ShootButton = new JoystickButton(xboxController, shootButtonID);
     JoystickButton quickTurn = new JoystickButton(xboxController, 5);
 
     JoystickButton testButton = new JoystickButton(xboxController, 8);
@@ -80,7 +77,6 @@ public class RobotContainer {
     Button intakeLowerLimitSwitch = new Button(() -> intakeLowerLimit.get());
     Button intakeUpperLimitSwitch = new Button(() -> intakeUpperLimit.get());
     Button turretRotatorSensor = new Button(() -> hallTurretRotator.get());
-
 
     public RobotContainer() {
 
@@ -98,25 +94,27 @@ public class RobotContainer {
                                 xboxController,
                                 moveFlightStick,
                                 rotateFlightStick));
-//        DrivetrainSubsystem.getInstance()
-//                .setDefaultCommand(
-//                        new CurvatureDriveCommand(
-//                                m_driveTrainSubsystem,
-//                                xboxController));
-               
-
+        //        DrivetrainSubsystem.getInstance()
+        //                .setDefaultCommand(
+        //                        new CurvatureDriveCommand(
+        //                                m_driveTrainSubsystem,
+        //                                xboxController));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
         ShootButton.whileHeld(m_shootTurretCommand, false);
-        testButton.whileHeld(new AutoBeginMovement(m_driveTrainSubsystem, m_hopperSubsystem, m_intakeSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem, m_turretRotatorSubsystem, NavX));
-
-
+        testButton.whileHeld(
+                new AutoBeginMovement(
+                        m_driveTrainSubsystem,
+                        m_hopperSubsystem,
+                        m_intakeSubsystem,
+                        m_shooterSubsystem,
+                        m_turretIntakeSubsystem,
+                        m_turretRotatorSubsystem,
+                        NavX));
 
         // Pressed Buttons
         quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
-
-
 
         // Sensor Activations
         intakeLowerLimitSwitch.whenPressed(m_stopIntakeCommand);

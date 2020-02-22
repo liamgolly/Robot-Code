@@ -22,7 +22,6 @@ public class ShooterSubsystem extends SubsystemBase {
         shooter.set(0);
     }
 
-
     public static ShooterSubsystem getInstance() {
         return INSTANCE;
     }
