@@ -30,7 +30,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     public void ArcadeDrive(double speed, double rotation, double angle) {
         driveTrain.arcadeDriveStraight(speed, rotation, angle);
-
     }
 
     public void CurvatureDrive(double speed, double rotation) {
@@ -48,7 +47,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
             drivemode = 1;
         }
     }
-
 
     public void moveAuto(int strat, double rotation) {
 
@@ -76,7 +74,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
                 break;
         }
     }
-
 
     public static DrivetrainSubsystem getInstance() {
         return INSTANCE;

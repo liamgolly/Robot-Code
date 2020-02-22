@@ -9,15 +9,16 @@ public class DriveTrain extends DifferentialDrive {
         super(leftMotor, rightMotor);
     }
 
-
     double zeroAngle;
+
     public void arcadeDriveStraight(double power, double rotation, double angle) {
-        if(Math.abs(rotation) > .1) {
+        if (Math.abs(rotation) > .1) {
             super.arcadeDrive(power, rotation);
             zeroAngle = 0;
-        }
-        else {
-            if (zeroAngle == 0) { zeroAngle = angle; }
+        } else {
+            if (zeroAngle == 0) {
+                zeroAngle = angle;
+            }
             if (angle > zeroAngle) {
                 super.arcadeDrive(power, -.35);
             }
