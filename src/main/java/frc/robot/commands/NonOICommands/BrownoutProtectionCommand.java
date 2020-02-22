@@ -1,7 +1,6 @@
 package frc.robot.commands.NonOICommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.classes.AlphaTalon;
 import frc.robot.classes.CurrentHolderClass;
 import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
 import java.util.Arrays;
@@ -22,7 +21,10 @@ public class BrownoutProtectionCommand extends CommandBase {
 
     @Override
     public void execute() {
-        double current = Arrays.stream(CurrentHolderClass.getInstance().motorCurrents).sum();
+        double current = Arrays.stream(CurrentHolderClass.getInstance().currentMotorCurrents).sum();
+        CurrentHolderClass.getInstance()
+                .historicalMotorCurrents
+                .add(CurrentHolderClass.getInstance().currentMotorCurrents);
         currentLimiterSubsystem.LimitCurrent(current);
     }
 
