@@ -50,7 +50,7 @@ public class ArcadeDriveCommand extends CommandBase {
                 break;
             case 2:
                 drivetrainSubsystem.ArcadeDrive(
-                        m_moveStick.getRawAxis(flightStickMoveAxis),
+                        -m_moveStick.getRawAxis(flightStickMoveAxis),
                         m_rotateStick.getRawAxis(flightStickRotateAxis));
         }
     }

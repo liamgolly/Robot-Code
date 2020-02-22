@@ -15,14 +15,17 @@ public class ShootTurretCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {
+        shooterSubsystem.Shoot();
+    }
 
     @Override
     public boolean isFinished() {
-        // TODO: Make this return true when this Command no longer needs to run execute()
         return false;
     }
 
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {
+        shooterSubsystem.stopShooter();
+    }
 }

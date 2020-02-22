@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import static frc.robot.Constants.MotorID.*;
+import static frc.robot.Constants.ShooterConstants.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -13,13 +14,12 @@ public class ShooterSubsystem extends SubsystemBase {
 
     private ShooterSubsystem() {}
 
-    public int ShooterMotors() {
-        int output = 0;
-        if (shooter.get() != 0) {
-            output += 1;
-        }
+    public void Shoot() {
+        shooter.set(shooterPower);
+    }
 
-        return output;
+    public void stopShooter() {
+        shooter.set(0);
     }
 
     public static ShooterSubsystem getInstance() {

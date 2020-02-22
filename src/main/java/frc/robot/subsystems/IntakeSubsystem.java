@@ -20,16 +20,13 @@ public class IntakeSubsystem extends SubsystemBase {
     Timer stalltimer = new Timer();
     Timer endstalltimer = new Timer();
 
+    public boolean atLimit = false;
+
     boolean intakeStalling = false;
 
     private static final IntakeSubsystem INSTANCE = new IntakeSubsystem();
 
     private IntakeSubsystem() {}
-
-    public void moveIntake(int direction, double power) {
-
-        intakeRotator.set(direction * power);
-    }
 
     public void activateIntake() {
         intakeProtection();
@@ -40,8 +37,13 @@ public class IntakeSubsystem extends SubsystemBase {
         }
     }
 
+    public void moveIntake(int direction, double power) {
+        intakeRotator.set(direction * power);
+    }
+
     public void disableIntake() {
         intakeMotor.set(0);
+        atLimit = true;
     }
 
     private void intakeProtection() {
@@ -65,16 +67,6 @@ public class IntakeSubsystem extends SubsystemBase {
             stalltimer.reset();
             intakeStalling = false;
         }
-    }
-
-    public int IntakeMotors() {
-        int output = 0;
-        if (intakeMotor.get() != 0) {
-            output += 1;
-        }
-        // if (intakeRotator.get() != 0) {output += 1; }
-
-        return output;
     }
 
     public static IntakeSubsystem getInstance() {

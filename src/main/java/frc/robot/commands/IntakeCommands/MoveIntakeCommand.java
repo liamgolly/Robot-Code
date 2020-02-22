@@ -5,13 +5,13 @@ import static frc.robot.Constants.ProtectionConstants.*;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.IntakeSubsystem;
 
-public class RaiseLowerIntakeCommand extends CommandBase {
+public class MoveIntakeCommand extends CommandBase {
     private final IntakeSubsystem intakeSubsystem;
 
     // 1 is raised, 2 is lowered
     int State = 1;
 
-    public RaiseLowerIntakeCommand(IntakeSubsystem intakeSubsystem) {
+    public MoveIntakeCommand(IntakeSubsystem intakeSubsystem) {
         this.intakeSubsystem = intakeSubsystem;
         addRequirements(intakeSubsystem);
     }
@@ -26,8 +26,7 @@ public class RaiseLowerIntakeCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-
-        return false;
+        return intakeSubsystem.atLimit;
     }
 
     @Override

@@ -11,13 +11,15 @@ import frc.robot.classes.AlphaTalon;
 public class TurretRotatorSubsystem extends SubsystemBase {
 
     AlphaTalon turretRotator = new AlphaTalon(turretRotatorID);
-    DigitalInput turretLimitSwitch = new DigitalInput(hallSensorTurretRotator);
 
     private static final TurretRotatorSubsystem INSTANCE = new TurretRotatorSubsystem();
 
     private TurretRotatorSubsystem() {}
 
-    public void zeroAngle() {}
+    public void angleZeroed() {
+        turretRotator.set(0);
+        turretRotator.setSelectedSensorPosition(0);
+    }
 
     public static TurretRotatorSubsystem getInstance() {
         return INSTANCE;
