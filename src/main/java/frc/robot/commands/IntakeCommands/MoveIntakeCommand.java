@@ -26,8 +26,7 @@ public class MoveIntakeCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-
-        return false;
+        return intakeSubsystem.atLimit;
     }
 
     @Override

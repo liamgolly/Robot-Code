@@ -21,8 +21,7 @@ public class StopIntakeCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-
-        return false;
+        return intakeSubsystem.atLimit;
     }
 
     @Override

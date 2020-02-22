@@ -9,6 +9,11 @@ package frc.robot;
 
 public final class Constants {
 
+    public static final class AutonomousConstants {
+        //haha diameter of the wheels don't know it whatever close enough
+        public static final double DrivetrainEncoderInch = (Math.PI * 7.7 / 4096) ;
+    }
+
     public static final class ControlPorts {
         public static final int controllerPort = 0;
         public static final int moveJoystickPort = 1;
@@ -76,7 +81,8 @@ public final class Constants {
 
     public static final class SensorID {
         public static final int hallSensorTurretRotator = 0;
-        public static final int hallSensorIntakeRotator = 1;
+        public static final int hallSensorUpperIntakeRotator = 1;
+        public static final int hallSensorLowerIntakeRotator = 2;
     }
 
     public static final class ShooterConstants {

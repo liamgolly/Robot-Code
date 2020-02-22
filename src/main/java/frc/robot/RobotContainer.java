@@ -13,14 +13,15 @@ import static frc.robot.Constants.ShooterConstants.*;
 import static frc.robot.Constants.intakeConstants.*;
 import static frc.robot.Constants.robotMovementConstants.*;
 
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Autonomous.AutoBeginMovement;
 import frc.robot.commands.DriveCommands.ArcadeDriveCommand;
 import frc.robot.commands.DriveCommands.ChangeQuickTurnCommand;
-import frc.robot.commands.DriveCommands.CurvatureDriveCommand;
-import frc.robot.commands.DriveCommands.SwitchDriveModeCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
 import frc.robot.commands.IntakeCommands.StopIntakeCommand;
 import frc.robot.commands.NonOICommands.BrownoutProtectionCommand;
@@ -37,7 +38,10 @@ public class RobotContainer {
     Joystick rotateFlightStick = new Joystick(rotateJoystickPort);
 
     DigitalInput hallTurretRotator = new DigitalInput(hallSensorTurretRotator);
-    DigitalInput intakeTurretLimit = new DigitalInput(hallSensorIntakeRotator);
+    DigitalInput intakeUpperLimit = new DigitalInput(hallSensorUpperIntakeRotator);
+    DigitalInput intakeLowerLimit = new DigitalInput(hallSensorLowerIntakeRotator);
+
+    AHRS NavX = new AHRS(SerialPort.Port.kUSB1);
 
     // Subsystem Imports
     ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
@@ -55,12 +59,12 @@ public class RobotContainer {
             new BrownoutProtectionCommand(m_currentLimiterSubsystem);
 
     SpinIntakeCommand m_spinIntakeCommand = new SpinIntakeCommand(m_intakeSubsystem);
-    SwitchDriveModeCommand m_switchDriveModeCommand =
-            new SwitchDriveModeCommand(m_driveTrainSubsystem);
+
     ShootTurretCommand m_shootTurretCommand =
             new ShootTurretCommand((m_shooterSubsystem));
     StopIntakeCommand m_stopIntakeCommand = new StopIntakeCommand(m_intakeSubsystem);
     StopTurretCommand m_stopTurretCommand = new StopTurretCommand(m_turretRotatorSubsystem);
+    
 
     // Buttons
     JoystickButton activateIntakeButton =
@@ -71,7 +75,10 @@ public class RobotContainer {
             new JoystickButton(xboxController, shootButtonID);
     JoystickButton quickTurn = new JoystickButton(xboxController, 5);
 
-    Button intakeLimitSwitch = new Button(() -> intakeTurretLimit.get());
+    JoystickButton testButton = new JoystickButton(xboxController, 8);
+
+    Button intakeLowerLimitSwitch = new Button(() -> intakeLowerLimit.get());
+    Button intakeUpperLimitSwitch = new Button(() -> intakeUpperLimit.get());
     Button turretRotatorSensor = new Button(() -> hallTurretRotator.get());
 
 
@@ -84,35 +91,36 @@ public class RobotContainer {
 
         // Default Commands
         CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
-//        DrivetrainSubsystem.getInstance()
-//                .setDefaultCommand(
-//                        new ArcadeDriveCommand(
-//                                m_driveTrainSubsystem,
-//                                xboxController,
-//                                moveFlightStick,
-//                                rotateFlightStick));
         DrivetrainSubsystem.getInstance()
                 .setDefaultCommand(
-                        new CurvatureDriveCommand(
+                        new ArcadeDriveCommand(
                                 m_driveTrainSubsystem,
-                                xboxController
-                        )
-                );
+                                xboxController,
+                                moveFlightStick,
+                                rotateFlightStick));
+//        DrivetrainSubsystem.getInstance()
+//                .setDefaultCommand(
+//                        new CurvatureDriveCommand(
+//                                m_driveTrainSubsystem,
+//                                xboxController));
+               
 
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
         ShootButton.whileHeld(m_shootTurretCommand, false);
+        testButton.whileHeld(new AutoBeginMovement(m_driveTrainSubsystem, m_hopperSubsystem, m_intakeSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem, m_turretRotatorSubsystem, NavX));
+
 
 
         // Pressed Buttons
-        changeDriveModeButton.whenPressed(m_switchDriveModeCommand);
         quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
 
 
 
         // Sensor Activations
-        intakeLimitSwitch.whenPressed(m_stopIntakeCommand);
+        intakeLowerLimitSwitch.whenPressed(m_stopIntakeCommand);
+        intakeUpperLimitSwitch.whenPressed(m_stopIntakeCommand);
         turretRotatorSensor.whenPressed(m_stopTurretCommand);
     }
 

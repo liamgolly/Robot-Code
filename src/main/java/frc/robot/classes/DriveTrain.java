@@ -11,16 +11,19 @@ public class DriveTrain extends DifferentialDrive {
 
     @Override
     public void arcadeDrive(double power, double rotation) {
-        super.arcadeDrive(0, 0);
+        super.arcadeDrive(power,rotation);
+        //super.arcadeDrive(0, 0);
     }
 
     @Override
     public void curvatureDrive(double power, double rotation, boolean quickTurn) {
-        super.curvatureDrive(0, 0, false);
+        super.curvatureDrive(power,rotation,quickTurn);
+        //super.curvatureDrive(0, 0, false);
     }
 
     @Override
     public void tankDrive(double leftPower, double rightPower) {
-        super.tankDrive(0, 0);
+        super.tankDrive(leftPower, rightPower);
+        //super.tankDrive(0, 0);
     }
 }
