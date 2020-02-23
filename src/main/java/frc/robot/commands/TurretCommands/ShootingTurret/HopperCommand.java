@@ -15,7 +15,9 @@ public class HopperCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() { hopperSubsystem.activateHopper();}
+    public void execute() {
+        hopperSubsystem.activateHopper();
+    }
 
     @Override
     public boolean isFinished() {
@@ -24,5 +26,7 @@ public class HopperCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {hopperSubsystem.deactiveHopper();}
+    public void end(boolean interrupted) {
+        hopperSubsystem.deactiveHopper();
+    }
 }

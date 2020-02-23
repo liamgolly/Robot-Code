@@ -15,7 +15,9 @@ public class TurretIntakeCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {turretIntakeSubsystem.activateTurretIntake();}
+    public void execute() {
+        turretIntakeSubsystem.activateTurretIntake();
+    }
 
     @Override
     public boolean isFinished() {
@@ -23,5 +25,7 @@ public class TurretIntakeCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {turretIntakeSubsystem.deactivateTurretIntake();}
+    public void end(boolean interrupted) {
+        turretIntakeSubsystem.deactivateTurretIntake();
+    }
 }
