@@ -16,9 +16,20 @@ public class TurretRotatorSubsystem extends SubsystemBase {
 
     private TurretRotatorSubsystem() {}
 
-    public void angleZeroed() {
-        turretRotator.set(0);
-        turretRotator.setSelectedSensorPosition(0);
+
+    public void zeroTurret(boolean sensorValue) {
+        limitSwitchHit(sensorValue);
+        if (sensorValue) { turretRotator.set(.2); }
+        else { turretRotator.set(0); }
+    }
+
+
+
+
+    private void limitSwitchHit(boolean sensorValue) {
+        if (!sensorValue) {
+            turretRotator.setSelectedSensorPosition(0);
+        }
     }
 
     public static TurretRotatorSubsystem getInstance() {

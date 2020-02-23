@@ -1,10 +1,18 @@
 package frc.robot.commands.TurretCommands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.TurretRotatorSubsystem;
 
 public class AimTurretCommand extends CommandBase {
 
-    public AimTurretCommand() {}
+    TurretRotatorSubsystem turretrotatorsubsystem;
+
+
+    public AimTurretCommand(TurretRotatorSubsystem turretRotatorSubsystem) {
+        turretrotatorsubsystem = turretRotatorSubsystem;
+
+        this.addRequirements(turretRotatorSubsystem);
+    }
 
     @Override
     public void initialize() {}
@@ -14,7 +22,7 @@ public class AimTurretCommand extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        // TODO: Make this return true when this Command no longer needs to run execute()
+
         return false;
     }
 

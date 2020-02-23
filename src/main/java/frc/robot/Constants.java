@@ -38,16 +38,16 @@ public final class Constants {
         public static final int leftMotor1ID = 0;
         public static final int leftMotor2ID = 1;
         public static final int rightMotor1ID = 2;
-        public static final int rightMotor2ID = 5;
+        public static final int rightMotor2ID = 3;
 
         // Climb
         public static final int pvcExtenderID = 4;
-        public static final int leftWinchID = 55;
+        public static final int leftWinchID = 5;
         public static final int rightWinchID = 6;
 
         // Turret Assembly
         public static final int turretRotatorID = 7;
-        public static final int shooterID = 9;
+        public static final int shooterID = 0;
 
         // Ball transportation
         public static final int intakeID = 9;
@@ -69,7 +69,8 @@ public final class Constants {
     }
 
     public static final class robotMovementConstants {
-        public static final int changeDriveModeButtonID = 1;
+        public static final int changeDriveModeButtonID = 11;
+        public static final int quickTurnButtonID = 5;
 
         public static final int xboxAccelerateAxis = 3;
         public static final int xboxBrakeAxis = 2;
@@ -86,6 +87,7 @@ public final class Constants {
     }
 
     public static final class ShooterConstants {
+        public static final int aimButtonID = 9;
         public static final double shooterPower = 1;
         public static final int shootButtonID = 6;
     }
