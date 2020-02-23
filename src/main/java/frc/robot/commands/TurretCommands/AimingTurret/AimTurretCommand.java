@@ -1,4 +1,4 @@
-package frc.robot.commands.TurretCommands;
+package frc.robot.commands.TurretCommands.AimingTurret;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretRotatorSubsystem;

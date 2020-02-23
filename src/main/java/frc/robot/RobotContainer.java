@@ -20,17 +20,14 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.DriveCommands.ArcadeDriveCommand;
-import frc.robot.commands.DriveCommands.ChangeQuickTurnCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
 import frc.robot.commands.IntakeCommands.StopIntakeCommand;
 import frc.robot.commands.NonOICommands.BrownoutProtectionCommand;
-import frc.robot.commands.TestCommands.WinchBurningCommand;
-import frc.robot.commands.TurretCommands.ShootTurretCommand;
-import frc.robot.commands.TurretCommands.ZeroAndAimCommandGroup;
-import frc.robot.commands.TurretCommands.ZeroTurretCommand;
+import frc.robot.commands.TurretCommands.ShootingTurret.ShootTurretCommand;
+import frc.robot.commands.TurretCommands.AimingTurret.ZeroAndAimCommandGroup;
+import frc.robot.commands.TurretCommands.ShootingTurret.ShootingCommandGroup;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
-import frc.robot.subsystems.TestSubsystems.WinchBurningSubsystem;
 
 public class RobotContainer {
 
@@ -47,7 +44,6 @@ public class RobotContainer {
 
     // Subsystem Imports
     ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
-    ColorWheelSubsystem m_colorWheelSubsystem = ColorWheelSubsystem.getInstance();
     CurrentLimiterSubsystem m_currentLimiterSubsystem = CurrentLimiterSubsystem.getInstance();
     DrivetrainSubsystem m_driveTrainSubsystem = DrivetrainSubsystem.getInstance();
     HopperSubsystem m_hopperSubsystem = HopperSubsystem.getInstance();
@@ -65,12 +61,11 @@ public class RobotContainer {
 
     // Command Groups
     ZeroAndAimCommandGroup m_zeroAndAimCommandGroup = new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator);
+    ShootingCommandGroup m_shootingCommandGroup = new ShootingCommandGroup(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem);
 
     // Buttons
     JoystickButton activateIntakeButton =
             new JoystickButton(xboxController, activateIntakeButtonID);
-    JoystickButton changeDriveModeButton =
-            new JoystickButton(xboxController, changeDriveModeButtonID);
     JoystickButton ShootButton = new JoystickButton(xboxController, shootButtonID);
     JoystickButton quickTurn = new JoystickButton(xboxController, quickTurnButtonID);
     JoystickButton aimTurret = new JoystickButton(xboxController, aimButtonID);
@@ -78,32 +73,29 @@ public class RobotContainer {
     Button intakeLowerLimitSwitch = new Button(() -> intakeLowerLimit.get());
     Button intakeUpperLimitSwitch = new Button(() -> intakeUpperLimit.get());
 
-    public RobotContainer() {
-
-        configureButtonBindings();
-    }
+    public RobotContainer() { configureButtonBindings(); }
 
     private void configureButtonBindings() {
 
         // Default Commands
 //        CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
-//        DrivetrainSubsystem.getInstance()
-//                .setDefaultCommand(
-//                        new ArcadeDriveCommand( // new CurvatureDriveCommand(
-//                                m_driveTrainSubsystem, // m_driveTrainSubsystem,
-//                                xboxController, // xboxController));
-//                                moveFlightStick,
-//                                rotateFlightStick,
-//                                NavX));
+        DrivetrainSubsystem.getInstance()
+                .setDefaultCommand(
+                        new ArcadeDriveCommand( // new CurvatureDriveCommand(
+                                m_driveTrainSubsystem, // m_driveTrainSubsystem,
+                                xboxController, // xboxController));
+                                moveFlightStick,
+                                rotateFlightStick,
+                                NavX));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
-        ShootButton.whileHeld(m_shootTurretCommand, false);
+        ShootButton.whileHeld(m_shootingCommandGroup, false); 
 
-        new JoystickButton(xboxController, 1).whenPressed(new WinchBurningCommand(WinchBurningSubsystem.getInstance()));
+
 
         // Pressed Buttons
-        quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
+//        quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
         aimTurret.whenPressed(m_zeroAndAimCommandGroup);
 
         // Sensor Activations

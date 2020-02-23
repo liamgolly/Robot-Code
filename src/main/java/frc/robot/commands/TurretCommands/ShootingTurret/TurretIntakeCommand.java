@@ -1,4 +1,4 @@
-package frc.robot.commands.TurretCommands;
+package frc.robot.commands.TurretCommands.ShootingTurret;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretIntakeSubsystem;
@@ -15,14 +15,13 @@ public class TurretIntakeCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {turretIntakeSubsystem.activateTurretIntake();}
 
     @Override
     public boolean isFinished() {
-        // TODO: Make this return true when this Command no longer needs to run execute()
         return false;
     }
 
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {turretIntakeSubsystem.deactivateTurretIntake();}
 }
