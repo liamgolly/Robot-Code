@@ -60,7 +60,8 @@ public class RobotContainer {
     StopIntakeCommand m_stopIntakeCommand = new StopIntakeCommand(m_intakeSubsystem);
 
     // Command Groups
-    ZeroAndAimCommandGroup m_zeroAndAimCommandGroup = new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator);
+    ZeroAndAimCommandGroup m_zeroAndAimCommandGroup =
+            new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator);
     ShootingCommandGroup m_shootingCommandGroup = new ShootingCommandGroup(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem);
 
     // Buttons

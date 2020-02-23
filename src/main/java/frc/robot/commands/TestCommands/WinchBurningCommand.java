@@ -3,7 +3,6 @@ package frc.robot.commands.TestCommands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TestSubsystems.WinchBurningSubsystem;
 
-
 public class WinchBurningCommand extends CommandBase {
     private final WinchBurningSubsystem winchBurningSubsystem;
 
@@ -17,7 +16,7 @@ public class WinchBurningCommand extends CommandBase {
 
     @Override
     public void initialize() {
-        //winchBurningSubsystem.reset();
+        // winchBurningSubsystem.reset();
         Counter = 0;
         finished = false;
     }
@@ -25,17 +24,14 @@ public class WinchBurningCommand extends CommandBase {
     @Override
     public void execute() {
         if (Counter < 501) {
-            //System.out.println(Counter);
+            // System.out.println(Counter);
             winchBurningSubsystem.burn(Counter);
             if (WinchBurningSubsystem.done) {
                 Counter++;
             }
-        }
-        else {
+        } else {
             finished = true;
         }
-
-
     }
 
     @Override
@@ -44,7 +40,5 @@ public class WinchBurningCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {
-
-    }
+    public void end(boolean interrupted) {}
 }

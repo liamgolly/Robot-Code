@@ -7,7 +7,6 @@ public class AimTurretCommand extends CommandBase {
 
     TurretRotatorSubsystem turretrotatorsubsystem;
 
-
     public AimTurretCommand(TurretRotatorSubsystem turretRotatorSubsystem) {
         turretrotatorsubsystem = turretRotatorSubsystem;
 
