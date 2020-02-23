@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretRotatorSubsystem;
 
-
 public class ZeroTurretCommand extends CommandBase {
     private final TurretRotatorSubsystem turretRotatorSubsystem;
     private final DigitalInput sensor;
@@ -16,7 +15,7 @@ public class ZeroTurretCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() { }
+    public void initialize() {}
 
     @Override
     public void execute() {
@@ -29,7 +28,5 @@ public class ZeroTurretCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {
-
-    }
+    public void end(boolean interrupted) {}
 }

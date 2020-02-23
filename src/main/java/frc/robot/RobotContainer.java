@@ -64,7 +64,8 @@ public class RobotContainer {
     StopIntakeCommand m_stopIntakeCommand = new StopIntakeCommand(m_intakeSubsystem);
 
     // Command Groups
-    ZeroAndAimCommandGroup m_zeroAndAimCommandGroup = new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator);
+    ZeroAndAimCommandGroup m_zeroAndAimCommandGroup =
+            new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator);
 
     // Buttons
     JoystickButton activateIntakeButton =
@@ -86,21 +87,23 @@ public class RobotContainer {
     private void configureButtonBindings() {
 
         // Default Commands
-//        CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
-//        DrivetrainSubsystem.getInstance()
-//                .setDefaultCommand(
-//                        new ArcadeDriveCommand( // new CurvatureDriveCommand(
-//                                m_driveTrainSubsystem, // m_driveTrainSubsystem,
-//                                xboxController, // xboxController));
-//                                moveFlightStick,
-//                                rotateFlightStick,
-//                                NavX));
+        //
+        // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
+        //        DrivetrainSubsystem.getInstance()
+        //                .setDefaultCommand(
+        //                        new ArcadeDriveCommand( // new CurvatureDriveCommand(
+        //                                m_driveTrainSubsystem, // m_driveTrainSubsystem,
+        //                                xboxController, // xboxController));
+        //                                moveFlightStick,
+        //                                rotateFlightStick,
+        //                                NavX));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
         ShootButton.whileHeld(m_shootTurretCommand, false);
 
-        new JoystickButton(xboxController, 1).whenPressed(new WinchBurningCommand(WinchBurningSubsystem.getInstance()));
+        new JoystickButton(xboxController, 1)
+                .whenPressed(new WinchBurningCommand(WinchBurningSubsystem.getInstance()));
 
         // Pressed Buttons
         quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
