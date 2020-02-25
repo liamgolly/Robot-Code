@@ -76,10 +76,6 @@ public class RobotContainer {
     JoystickButton quickTurn = new JoystickButton(Yoke, quickTurnButtonID);
     JoystickButton aimTurret = new JoystickButton(xboxController, aimButtonID);
 
-
-
-
-
     Button intakeLowerLimitSwitch = new Button(() -> intakeLowerLimit.get());
     Button intakeUpperLimitSwitch = new Button(() -> intakeUpperLimit.get());
 
@@ -91,25 +87,24 @@ public class RobotContainer {
 
         // Default Commands
 
-        //CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
+        // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         DrivetrainSubsystem.getInstance()
                 .setDefaultCommand(
-                         new ArcadeDriveCommand(
+                        new ArcadeDriveCommand(
                                 m_driveTrainSubsystem,
                                 xboxController,
                                 moveFlightStick,
                                 rotateFlightStick,
                                 Yoke,
                                 Pedals,
-                                NavX
-                         ));
+                                NavX));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
         ShootButton.whileHeld(m_shootingCommandGroup, false);
 
         // Pressed Buttons
-        //quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
+        // quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
         aimTurret.whenPressed(m_zeroAndAimCommandGroup);
         quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
 

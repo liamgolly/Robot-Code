@@ -29,7 +29,6 @@ public class TurretRotatorSubsystem extends SubsystemBase {
 
     private double error = targetx.getDouble(0);
 
-
     private static final TurretRotatorSubsystem INSTANCE = new TurretRotatorSubsystem();
 
     private TurretRotatorSubsystem() {}
@@ -50,11 +49,9 @@ public class TurretRotatorSubsystem extends SubsystemBase {
 
         if (targetx.getDouble(0) > 1.0) {
             motorpower = (p * error) + (i * integral) + (d * derivative);
-        }
-        else if (targetx.getDouble(0) < 1.0) {
+        } else if (targetx.getDouble(0) < 1.0) {
             motorpower = -1 * ((p * error) + (i * integral) + (d * derivative));
-        }
-        else {
+        } else {
             motorpower = 0;
         }
 

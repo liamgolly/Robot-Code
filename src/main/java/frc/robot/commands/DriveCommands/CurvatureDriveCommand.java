@@ -12,8 +12,11 @@ public class CurvatureDriveCommand extends CommandBase {
     Joystick yoke;
     Joystick pedals;
 
-
-    public CurvatureDriveCommand(DrivetrainSubsystem drivetrainSubsystem, Joystick XboxController, Joystick YOKE, Joystick PEDALS) {
+    public CurvatureDriveCommand(
+            DrivetrainSubsystem drivetrainSubsystem,
+            Joystick XboxController,
+            Joystick YOKE,
+            Joystick PEDALS) {
         this.drivetrainSubsystem = drivetrainSubsystem;
         controller = XboxController;
         yoke = YOKE;
@@ -27,17 +30,16 @@ public class CurvatureDriveCommand extends CommandBase {
     @Override
     public void execute() {
 
-
         drivetrainSubsystem.CurvatureDrive(
-                ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2) - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),  //pedals
-                //-yoke.getRawAxis(yokePushPull),   //push/pull
-                //-yoke.getRawAxis(yokeBlackLever),    //levers
+                ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2)
+                        - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2), // pedals
+                // -yoke.getRawAxis(yokePushPull),   //push/pull
+                // -yoke.getRawAxis(yokeBlackLever),    //levers
                 yoke.getRawAxis(yokeTurnAxis)
 
-                //controller.getRawAxis(xboxAccelerateAxis) - controller.getRawAxis(xboxBrakeAxis),
+                // controller.getRawAxis(xboxAccelerateAxis) - controller.getRawAxis(xboxBrakeAxis),
                 //        controller.getRawAxis(xboxRotateAxis));
-        );
-
+                );
     }
 
     @Override

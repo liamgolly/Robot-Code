@@ -28,12 +28,9 @@ public class DriveTrain extends DifferentialDrive {
             if (angle == zeroAngle) {
                 super.arcadeDrive(power, 0);
             }
-
-
         }
         System.out.println(zeroAngle);
         System.out.println(angle);
-
 
         // super.arcadeDrive(0, 0);
     }

@@ -18,7 +18,6 @@ public class ArcadeDriveCommand extends CommandBase {
     Joystick yoke;
     Joystick pedals;
 
-
     AHRS navx;
 
     public ArcadeDriveCommand(
@@ -71,12 +70,11 @@ public class ArcadeDriveCommand extends CommandBase {
 
             case 3:
                 drivetrainSubsystem.ArcadeDrive(
-                        ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2) - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
+                        ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2)
+                                - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
                         yoke.getRawAxis(yokeTurnAxis),
-                        navx.getRawGyroZ()
-                );
+                        navx.getRawGyroZ());
         }
-
     }
 
     @Override

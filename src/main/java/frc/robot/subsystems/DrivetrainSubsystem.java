@@ -40,7 +40,6 @@ public class DrivetrainSubsystem extends SubsystemBase {
         quickTurnEnabled = !quickTurnEnabled;
     }
 
-
     public void moveAuto(int strat, double rotation) {
 
         switch (strat) {
