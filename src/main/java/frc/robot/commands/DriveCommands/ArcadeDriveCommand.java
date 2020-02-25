@@ -14,6 +14,11 @@ public class ArcadeDriveCommand extends CommandBase {
     Joystick m_xboxController;
     Joystick m_moveStick;
     Joystick m_rotateStick;
+
+    Joystick yoke;
+    Joystick pedals;
+
+
     AHRS navx;
 
     public ArcadeDriveCommand(
@@ -21,10 +26,14 @@ public class ArcadeDriveCommand extends CommandBase {
             Joystick XboxController,
             Joystick MoveStick,
             Joystick RotateStick,
+            Joystick YOKE,
+            Joystick PEDALS,
             AHRS NavX) {
         m_xboxController = XboxController;
         m_moveStick = MoveStick;
         m_rotateStick = RotateStick;
+        yoke = YOKE;
+        pedals = PEDALS;
         navx = NavX;
 
         this.drivetrainSubsystem = drivetrainSubsystem;
@@ -59,7 +68,15 @@ public class ArcadeDriveCommand extends CommandBase {
                         -m_moveStick.getRawAxis(flightStickMoveAxis),
                         m_rotateStick.getRawAxis(flightStickRotateAxis),
                         navx.getRawGyroZ());
+
+            case 3:
+                drivetrainSubsystem.ArcadeDrive(
+                        ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2) - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
+                        yoke.getRawAxis(yokeTurnAxis),
+                        navx.getRawGyroZ()
+                );
         }
+
     }
 
     @Override

@@ -69,15 +69,23 @@ public final class Constants {
     }
 
     public static final class robotMovementConstants {
-        public static final int changeDriveModeButtonID = 11;
-        public static final int quickTurnButtonID = 5;
+        public static final int quickTurnButtonID = 2;
 
         public static final int xboxAccelerateAxis = 3;
         public static final int xboxBrakeAxis = 2;
         public static final int xboxRotateAxis = 0;
 
+        public static final int pedalAccelerateAxis = 1;
+        public static final int pedalBrakeAxis = 0;
+
+        public static final int yokeTurnAxis = 0;
+        public static final int yokePushPull = 1;
+        public static final int yokeBlackLever = 2;
+
         public static final int flightStickMoveAxis = 1;
         public static final int flightStickRotateAxis = 0;
+        public static final int yokeAxis = 3;
+        public static final int pedalAxis = 4;
     }
 
     public static final class SensorID {
@@ -93,6 +101,6 @@ public final class Constants {
     }
 
     public static final class TurretIntakeConstants {
-        public static final double turretIntakePower = 0.3;
+        public static final double turretIntakePower = 0.5;
     }
 }

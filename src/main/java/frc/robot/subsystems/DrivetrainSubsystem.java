@@ -11,7 +11,7 @@ import frc.robot.classes.DriveTrain;
 public class DrivetrainSubsystem extends SubsystemBase {
 
     // 1: Forza, 2: CrabwalkBananna
-    public static int drivemode = 1;
+    public static int drivemode = 3;
     private boolean quickTurnEnabled = false;
     public int autostate = 1;
 
@@ -33,20 +33,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
     }
 
     public void CurvatureDrive(double speed, double rotation) {
-        driveTrain.curvatureDrive(speed, rotation, quickTurnEnabled);
+        driveTrain.curvatureDrive(speed, rotation, true);
     }
 
     public void quickTurn() {
         quickTurnEnabled = !quickTurnEnabled;
     }
 
-    public void changeDriveMode() {
-        if (DrivetrainSubsystem.drivemode == 1) {
-            drivemode = 2;
-        } else {
-            drivemode = 1;
-        }
-    }
 
     public void moveAuto(int strat, double rotation) {
 
