@@ -25,10 +25,12 @@ import frc.robot.commands.DriveCommands.CurvatureDriveCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
 import frc.robot.commands.IntakeCommands.StopIntakeCommand;
 import frc.robot.commands.NonOICommands.BrownoutProtectionCommand;
+import frc.robot.commands.TestCommands.NavXOutputCommand;
 import frc.robot.commands.TurretCommands.AimingTurret.ZeroAndAimCommandGroup;
 import frc.robot.commands.TurretCommands.ShootingTurret.ShootingCommandGroup;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
+import frc.robot.subsystems.TestSubsystems.NavXOutputSubsystem;
 
 public class RobotContainer {
 
@@ -44,7 +46,7 @@ public class RobotContainer {
     DigitalInput intakeUpperLimit = new DigitalInput(hallSensorUpperIntakeRotator);
     DigitalInput intakeLowerLimit = new DigitalInput(hallSensorLowerIntakeRotator);
 
-    AHRS NavX = new AHRS(SerialPort.Port.kUSB1);
+    AHRS NavX = new AHRS(SerialPort.Port.kUSB);
 
     // Subsystem Imports
     ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
@@ -52,9 +54,11 @@ public class RobotContainer {
     DrivetrainSubsystem m_driveTrainSubsystem = DrivetrainSubsystem.getInstance();
     HopperSubsystem m_hopperSubsystem = HopperSubsystem.getInstance();
     IntakeSubsystem m_intakeSubsystem = IntakeSubsystem.getInstance();
+    NavXOutputSubsystem m_NavXOutputSubsystem = NavXOutputSubsystem.getInstance();
     ShooterSubsystem m_shooterSubsystem = ShooterSubsystem.getInstance();
     TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
     TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
+
 
     // Command Imports
     BrownoutProtectionCommand m_brownoutProtectionCommand =
@@ -85,6 +89,7 @@ public class RobotContainer {
 
     private void configureButtonBindings() {
 
+
         // Default Commands
 
         // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
@@ -98,6 +103,9 @@ public class RobotContainer {
                                 Yoke,
                                 Pedals,
                                 NavX));
+
+        //NavXOutputSubsystem.getInstance().setDefaultCommand(new NavXOutputCommand(m_NavXOutputSubsystem, NavX));
+
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);

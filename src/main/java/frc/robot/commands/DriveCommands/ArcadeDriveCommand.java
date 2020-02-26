@@ -4,7 +4,6 @@ import static frc.robot.Constants.robotMovementConstants.*;
 
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
@@ -49,33 +48,34 @@ public class ArcadeDriveCommand extends CommandBase {
             case 1:
                 if (m_xboxController.getRawAxis(xboxBrakeAxis)
                         <= m_xboxController.getRawAxis(xboxAccelerateAxis)) {
-                    drivetrainSubsystem.ArcadeDrive(
+                    drivetrainSubsystem.ArcadeDriveStraight(
                             m_xboxController.getRawAxis(xboxAccelerateAxis)
                                     - m_xboxController.getRawAxis(xboxBrakeAxis),
                             m_xboxController.getRawAxis(xboxRotateAxis) * .9,
-                            navx.getRawGyroZ());
+                            navx.getAngle());
                 } else {
-                    drivetrainSubsystem.ArcadeDrive(
+                    drivetrainSubsystem.ArcadeDriveStraight(
                             m_xboxController.getRawAxis(xboxAccelerateAxis)
                                     - m_xboxController.getRawAxis(xboxBrakeAxis),
                             -(m_xboxController.getRawAxis(xboxRotateAxis) * .9),
-                            navx.getRawGyroZ());
+                            navx.getAngle());
                 }
                 break;
             case 2:
-                drivetrainSubsystem.ArcadeDrive(
+                drivetrainSubsystem.ArcadeDriveStraight(
                         -m_moveStick.getRawAxis(flightStickMoveAxis),
                         m_rotateStick.getRawAxis(flightStickRotateAxis),
-                        navx.getRawGyroZ());
+                        navx.getAngle());
 
             case 3:
-                drivetrainSubsystem.ArcadeDrive(
+                drivetrainSubsystem.ArcadeDriveStraight(
                         ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2)
                                 - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
                         yoke.getRawAxis(yokeTurnAxis),
-                        navx.getRawGyroZ());
+                        navx.getAngle());
         }
     }
+
 
     @Override
     public boolean isFinished() {

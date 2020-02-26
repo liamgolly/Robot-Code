@@ -3,22 +3,22 @@ package frc.robot.subsystems;
 import static frc.robot.Constants.AutonomousConstants.*;
 import static frc.robot.Constants.MotorID.*;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.classes.AlphaTalon;
 import frc.robot.classes.DriveTrain;
 
 public class DrivetrainSubsystem extends SubsystemBase {
 
     // 1: Forza, 2: CrabwalkBananna
-    public static int drivemode = 3;
+    public static int drivemode = 1;
     private boolean quickTurnEnabled = false;
     public int autostate = 1;
 
-    WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(leftMotor1ID);
-    WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(leftMotor2ID);
-    public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(rightMotor1ID);
-    WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(rightMotor2ID);
+    AlphaTalon leftMotor1 = new AlphaTalon(leftMotor1ID);
+    AlphaTalon leftMotor2 = new AlphaTalon(leftMotor2ID);
+    public AlphaTalon rightMotor1 = new AlphaTalon(rightMotor1ID);
+    AlphaTalon rightMotor2 = new AlphaTalon(rightMotor2ID);
     DriveTrain driveTrain =
             new DriveTrain(
                     new SpeedControllerGroup(leftMotor1, leftMotor2),
@@ -28,8 +28,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
     private DrivetrainSubsystem() {}
 
-    public void ArcadeDrive(double speed, double rotation, double angle) {
+    public void ArcadeDriveStraight(double speed, double rotation, double angle) {
         driveTrain.arcadeDriveStraight(speed, rotation, angle);
+    }
+
+    public void ArcadeDrive (double speed, double rotation) {
+        driveTrain.tankDrive(speed, rotation);
     }
 
     public void CurvatureDrive(double speed, double rotation) {
@@ -40,31 +44,11 @@ public class DrivetrainSubsystem extends SubsystemBase {
         quickTurnEnabled = !quickTurnEnabled;
     }
 
+
+
     public void moveAuto(int strat, double rotation) {
 
-        switch (strat) {
-            case 2:
-                switch (autostate) {
-                    case 1:
-                    case 3:
-                        driveTrain.arcadeDrive(.35, 0);
 
-                        if (rightMotor1.getSelectedSensorPosition() * DrivetrainEncoderInch > 48) {
-                            autostate++;
-                            rightMotor1.setSelectedSensorPosition(0);
-                        }
-                        break;
-
-                    case 2:
-                        System.out.println(rotation);
-                        driveTrain.tankDrive(-0.3, .3);
-                        if (rotation > 170) {
-                            autostate++;
-                        }
-                        break;
-                }
-                break;
-        }
     }
 
     public static DrivetrainSubsystem getInstance() {

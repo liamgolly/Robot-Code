@@ -12,16 +12,10 @@ public class ColorWheelSubsystem extends SubsystemBase {
 
     private static final ColorWheelSubsystem INSTANCE = new ColorWheelSubsystem();
 
-    private ColorWheelSubsystem() {}
-
-    public int ColorWheelMotors() {
-        int output = 0;
-        if (colorWheelSpinner.get() != 0) {
-            output += 1;
-        }
-
-        return output;
+    private ColorWheelSubsystem() {
     }
+
+
 
     public static ColorWheelSubsystem getInstance() {
         return INSTANCE;

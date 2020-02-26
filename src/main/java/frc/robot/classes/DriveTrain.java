@@ -3,6 +3,8 @@ package frc.robot.classes;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import static frc.robot.Constants.robotMovementConstants.*;
+
 public class DriveTrain extends DifferentialDrive {
 
     public DriveTrain(SpeedController leftMotor, SpeedController rightMotor) {
@@ -19,21 +21,21 @@ public class DriveTrain extends DifferentialDrive {
             if (zeroAngle == 0) {
                 zeroAngle = angle;
             }
-            if (angle >= zeroAngle) {
+            if (angle-zeroAngle > driveStraightTolerance ) {
                 super.arcadeDrive(power, -.35);
             }
-            if (angle < zeroAngle) {
+            if (angle - zeroAngle < -driveStraightTolerance) {
                 super.arcadeDrive(power, .35);
             }
-            if (angle == zeroAngle) {
+            if (angle - zeroAngle >= -driveStraightTolerance && angle-zeroAngle <= driveStraightTolerance) {
                 super.arcadeDrive(power, 0);
             }
         }
-        System.out.println(zeroAngle);
-        System.out.println(angle);
+        System.out.println(Math.abs(angle-zeroAngle));
 
         // super.arcadeDrive(0, 0);
     }
+
 
     @Override
     public void curvatureDrive(double power, double rotation, boolean quickTurn) {
