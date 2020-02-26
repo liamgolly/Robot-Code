@@ -12,17 +12,16 @@ public final class Constants {
     public static final class AutonomousConstants {
         // haha diameter of the wheels don't know it whatever close enough
         public static final double DrivetrainEncoderInch = (Math.PI * 7.7 / 4096);
-        //distance between the hooks lol mounted yet? no.
+        // distance between the hooks lol mounted yet? no.
         public static final double HookDistance = 14;
 
         public static final double PVCEncoderInch = 2 * Math.PI / 4096;
-        //missing the diameter of the winch spool here \/
+        // missing the diameter of the winch spool here \/
         public static final double WinchEncoderInch = 2.5 * Math.PI / 4096;
-
     }
 
     public static final class ClimbConstants {
-        public static int OverrideClimbModeID = 2; //alt stick
+        public static int OverrideClimbModeID = 2; // alt stick
     }
 
     public static final class ControlPorts {
@@ -41,8 +40,8 @@ public final class Constants {
 
     public static final class intakeConstants {
         public static final double intakePower = 0.45;
-        public static final int activateIntakeButtonID = 9; //main stick
-        public static final int raiseIntakeButtonID = 10; //main stick
+        public static final int activateIntakeButtonID = 9; // main stick
+        public static final int raiseIntakeButtonID = 10; // main stick
     }
 
     public static final class MotorID {
@@ -81,7 +80,7 @@ public final class Constants {
     }
 
     public static final class robotMovementConstants {
-        public static final int quickTurnButtonID = 99; //not a thing
+        public static final int quickTurnButtonID = 99; // not a thing
 
         public static final int xboxAccelerateAxis = 3;
         public static final int xboxBrakeAxis = 2;
@@ -208,15 +207,3 @@ Right Y         -
 2
 3
 */
-
-
-
-
-
-
-
-
-
-
-
-

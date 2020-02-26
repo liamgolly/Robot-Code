@@ -22,9 +22,7 @@ public class ClimbCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {
-
-    }
+    public void execute() {}
 
     @Override
     public boolean isFinished() {

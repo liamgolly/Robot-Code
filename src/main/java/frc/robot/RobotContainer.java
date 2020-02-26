@@ -59,7 +59,6 @@ public class RobotContainer {
     TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
     TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
 
-
     // Command Imports
     BrownoutProtectionCommand m_brownoutProtectionCommand =
             new BrownoutProtectionCommand(m_currentLimiterSubsystem);
@@ -89,7 +88,6 @@ public class RobotContainer {
 
     private void configureButtonBindings() {
 
-
         // Default Commands
 
         // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
@@ -104,8 +102,8 @@ public class RobotContainer {
                                 Pedals,
                                 NavX));
 
-        //NavXOutputSubsystem.getInstance().setDefaultCommand(new NavXOutputCommand(m_NavXOutputSubsystem, NavX));
-
+        // NavXOutputSubsystem.getInstance().setDefaultCommand(new
+        // NavXOutputCommand(m_NavXOutputSubsystem, NavX));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
