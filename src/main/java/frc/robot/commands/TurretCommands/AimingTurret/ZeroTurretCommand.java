@@ -1,13 +1,16 @@
-package frc.robot.commands.TurretCommands;
+package frc.robot.commands.TurretCommands.AimingTurret;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretRotatorSubsystem;
 
-public class StopTurretCommand extends CommandBase {
+public class ZeroTurretCommand extends CommandBase {
     private final TurretRotatorSubsystem turretRotatorSubsystem;
+    private final DigitalInput sensor;
 
-    public StopTurretCommand(TurretRotatorSubsystem turretRotatorSubsystem) {
+    public ZeroTurretCommand(TurretRotatorSubsystem turretRotatorSubsystem, DigitalInput Sensor) {
         this.turretRotatorSubsystem = turretRotatorSubsystem;
+        this.sensor = Sensor;
         addRequirements(turretRotatorSubsystem);
     }
 
@@ -16,12 +19,12 @@ public class StopTurretCommand extends CommandBase {
 
     @Override
     public void execute() {
-        turretRotatorSubsystem.angleZeroed();
+        turretRotatorSubsystem.zeroTurret(sensor.get());
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return !sensor.get();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package frc.robot.commands.InternalsCommands;
+package frc.robot.commands.TurretCommands.ShootingTurret;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.HopperSubsystem;
@@ -15,7 +15,9 @@ public class HopperCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {
+        hopperSubsystem.activateHopper();
+    }
 
     @Override
     public boolean isFinished() {
@@ -24,5 +26,7 @@ public class HopperCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {
+        hopperSubsystem.deactiveHopper();
+    }
 }

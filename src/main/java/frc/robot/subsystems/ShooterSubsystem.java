@@ -16,6 +16,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
     public void Shoot() {
         shooter.set(shooterPower);
+        System.out.println(shooter.getSelectedSensorVelocity());
     }
 
     public void stopShooter() {

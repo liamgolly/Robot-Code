@@ -2,8 +2,8 @@ package frc.robot.commands.DriveCommands;
 
 import static frc.robot.Constants.robotMovementConstants.*;
 
+import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
@@ -14,14 +14,25 @@ public class ArcadeDriveCommand extends CommandBase {
     Joystick m_moveStick;
     Joystick m_rotateStick;
 
+    Joystick yoke;
+    Joystick pedals;
+
+    AHRS navx;
+
     public ArcadeDriveCommand(
             DrivetrainSubsystem drivetrainSubsystem,
             Joystick XboxController,
             Joystick MoveStick,
-            Joystick RotateStick) {
+            Joystick RotateStick,
+            Joystick YOKE,
+            Joystick PEDALS,
+            AHRS NavX) {
         m_xboxController = XboxController;
         m_moveStick = MoveStick;
         m_rotateStick = RotateStick;
+        yoke = YOKE;
+        pedals = PEDALS;
+        navx = NavX;
 
         this.drivetrainSubsystem = drivetrainSubsystem;
         addRequirements(drivetrainSubsystem);
@@ -37,21 +48,31 @@ public class ArcadeDriveCommand extends CommandBase {
             case 1:
                 if (m_xboxController.getRawAxis(xboxBrakeAxis)
                         <= m_xboxController.getRawAxis(xboxAccelerateAxis)) {
-                    drivetrainSubsystem.ArcadeDrive(
+                    drivetrainSubsystem.ArcadeDriveStraight(
                             m_xboxController.getRawAxis(xboxAccelerateAxis)
                                     - m_xboxController.getRawAxis(xboxBrakeAxis),
-                            m_xboxController.getRawAxis(xboxRotateAxis) * .9);
+                            m_xboxController.getRawAxis(xboxRotateAxis) * .9,
+                            navx.getAngle());
                 } else {
-                    drivetrainSubsystem.ArcadeDrive(
+                    drivetrainSubsystem.ArcadeDriveStraight(
                             m_xboxController.getRawAxis(xboxAccelerateAxis)
                                     - m_xboxController.getRawAxis(xboxBrakeAxis),
-                            -(m_xboxController.getRawAxis(xboxRotateAxis) * .9));
+                            -(m_xboxController.getRawAxis(xboxRotateAxis) * .9),
+                            navx.getAngle());
                 }
                 break;
             case 2:
-                drivetrainSubsystem.ArcadeDrive(
+                drivetrainSubsystem.ArcadeDriveStraight(
                         -m_moveStick.getRawAxis(flightStickMoveAxis),
-                        m_rotateStick.getRawAxis(flightStickRotateAxis));
+                        m_rotateStick.getRawAxis(flightStickRotateAxis),
+                        navx.getAngle());
+
+            case 3:
+                drivetrainSubsystem.ArcadeDriveStraight(
+                        ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2)
+                                - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
+                        yoke.getRawAxis(yokeTurnAxis),
+                        navx.getAngle());
         }
     }
 

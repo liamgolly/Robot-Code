@@ -14,15 +14,6 @@ public class ColorWheelSubsystem extends SubsystemBase {
 
     private ColorWheelSubsystem() {}
 
-    public int ColorWheelMotors() {
-        int output = 0;
-        if (colorWheelSpinner.get() != 0) {
-            output += 1;
-        }
-
-        return output;
-    }
-
     public static ColorWheelSubsystem getInstance() {
         return INSTANCE;
     }

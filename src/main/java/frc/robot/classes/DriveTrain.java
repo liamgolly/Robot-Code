@@ -1,5 +1,7 @@
 package frc.robot.classes;
 
+import static frc.robot.Constants.robotMovementConstants.*;
+
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -9,9 +11,29 @@ public class DriveTrain extends DifferentialDrive {
         super(leftMotor, rightMotor);
     }
 
-    @Override
-    public void arcadeDrive(double power, double rotation) {
-        super.arcadeDrive(power, rotation);
+    double zeroAngle;
+
+    public void arcadeDriveStraight(double power, double rotation, double angle) {
+        if (Math.abs(rotation) > 0) {
+            super.arcadeDrive(power, rotation);
+            zeroAngle = 0;
+        } else {
+            if (zeroAngle == 0) {
+                zeroAngle = angle;
+            }
+            if (angle - zeroAngle > driveStraightTolerance) {
+                super.arcadeDrive(power, -.35);
+            }
+            if (angle - zeroAngle < -driveStraightTolerance) {
+                super.arcadeDrive(power, .35);
+            }
+            if (angle - zeroAngle >= -driveStraightTolerance
+                    && angle - zeroAngle <= driveStraightTolerance) {
+                super.arcadeDrive(power, 0);
+            }
+        }
+        System.out.println(Math.abs(angle - zeroAngle));
+
         // super.arcadeDrive(0, 0);
     }
 
