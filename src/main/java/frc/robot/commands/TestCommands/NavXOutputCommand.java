@@ -4,6 +4,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TestSubsystems.NavXOutputSubsystem;
 
+
 public class NavXOutputCommand extends CommandBase {
     private final NavXOutputSubsystem navXOutputSubsystem;
     private final AHRS navx;
@@ -15,7 +16,9 @@ public class NavXOutputCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+
+    }
 
     @Override
     public void execute() {
@@ -29,5 +32,7 @@ public class NavXOutputCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {
+
+    }
 }

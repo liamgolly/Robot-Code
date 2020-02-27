@@ -12,7 +12,10 @@ public class ColorWheelSubsystem extends SubsystemBase {
 
     private static final ColorWheelSubsystem INSTANCE = new ColorWheelSubsystem();
 
-    private ColorWheelSubsystem() {}
+    private ColorWheelSubsystem() {
+    }
+
+
 
     public static ColorWheelSubsystem getInstance() {
         return INSTANCE;

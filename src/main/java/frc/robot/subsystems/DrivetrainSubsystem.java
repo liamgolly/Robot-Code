@@ -32,7 +32,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
         driveTrain.arcadeDriveStraight(speed, rotation, angle);
     }
 
-    public void ArcadeDrive(double speed, double rotation) {
+    public void ArcadeDrive (double speed, double rotation) {
         driveTrain.tankDrive(speed, rotation);
     }
 
@@ -44,7 +44,12 @@ public class DrivetrainSubsystem extends SubsystemBase {
         quickTurnEnabled = !quickTurnEnabled;
     }
 
-    public void moveAuto(int strat, double rotation) {}
+
+
+    public void moveAuto(int strat, double rotation) {
+
+
+    }
 
     public static DrivetrainSubsystem getInstance() {
         return INSTANCE;

@@ -7,10 +7,9 @@
 
 package frc.robot;
 
+import static frc.robot.Constants.ButtonID.*;
 import static frc.robot.Constants.ControlPorts.*;
 import static frc.robot.Constants.SensorID.*;
-import static frc.robot.Constants.ShooterConstants.*;
-import static frc.robot.Constants.intakeConstants.*;
 import static frc.robot.Constants.robotMovementConstants.*;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -20,12 +19,9 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.DriveCommands.ArcadeDriveCommand;
-import frc.robot.commands.DriveCommands.ChangeQuickTurnCommand;
-import frc.robot.commands.DriveCommands.CurvatureDriveCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
 import frc.robot.commands.IntakeCommands.StopIntakeCommand;
 import frc.robot.commands.NonOICommands.BrownoutProtectionCommand;
-import frc.robot.commands.TestCommands.NavXOutputCommand;
 import frc.robot.commands.TurretCommands.AimingTurret.ZeroAndAimCommandGroup;
 import frc.robot.commands.TurretCommands.ShootingTurret.ShootingCommandGroup;
 import frc.robot.subsystems.*;
@@ -36,8 +32,8 @@ public class RobotContainer {
 
     // Controllers and Sensors
     Joystick xboxController = new Joystick(controllerPort);
-    Joystick moveFlightStick = new Joystick(moveJoystickPort);
-    Joystick rotateFlightStick = new Joystick(rotateJoystickPort);
+    Joystick mainFlightStick = new Joystick(moveJoystickPort);
+    Joystick altFlightStick = new Joystick(rotateJoystickPort);
 
     Joystick Yoke = new Joystick(yokeAxis);
     Joystick Pedals = new Joystick(pedalAxis);
@@ -59,6 +55,7 @@ public class RobotContainer {
     TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
     TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
 
+
     // Command Imports
     BrownoutProtectionCommand m_brownoutProtectionCommand =
             new BrownoutProtectionCommand(m_currentLimiterSubsystem);
@@ -74,10 +71,25 @@ public class RobotContainer {
 
     // Buttons
     JoystickButton activateIntakeButton =
-            new JoystickButton(xboxController, activateIntakeButtonID);
-    JoystickButton ShootButton = new JoystickButton(xboxController, shootButtonID);
-    JoystickButton quickTurn = new JoystickButton(Yoke, quickTurnButtonID);
-    JoystickButton aimTurret = new JoystickButton(xboxController, aimButtonID);
+            new JoystickButton(mainFlightStick, LowerIntakeID);
+    JoystickButton aimTurret = new JoystickButton(mainFlightStick, autoAimID);
+    JoystickButton ShootButton = new JoystickButton(mainFlightStick, ShootID);
+    JoystickButton OverrideClimbMode = new JoystickButton(mainFlightStick, OverrideClimbModeID);
+    JoystickButton EnableTriangle = new JoystickButton(mainFlightStick, EnableTriangleID);
+    JoystickButton EnableLift = new JoystickButton(mainFlightStick, EnableLiftID);
+    JoystickButton LowerPVC = new JoystickButton(mainFlightStick, LowerPVCID);
+    JoystickButton RaisePVC = new JoystickButton(mainFlightStick, RaisePVCID);
+    JoystickButton RaiseIntake = new JoystickButton(mainFlightStick, RaiseIntakeID);
+    JoystickButton OverrideIntake = new JoystickButton(mainFlightStick, OverrideIntakeID);
+    JoystickButton AutoClimb = new JoystickButton(mainFlightStick, AutoClimbID);
+
+    JoystickButton StageOneColorWheel = new JoystickButton(altFlightStick, ColorWheelStageOneID);
+    JoystickButton StageTwoColorWheel = new JoystickButton(altFlightStick, ColorWheelStageTwoID);
+
+
+
+
+
 
     Button intakeLowerLimitSwitch = new Button(() -> intakeLowerLimit.get());
     Button intakeUpperLimitSwitch = new Button(() -> intakeUpperLimit.get());
@@ -88,6 +100,7 @@ public class RobotContainer {
 
     private void configureButtonBindings() {
 
+
         // Default Commands
 
         // CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
@@ -96,23 +109,19 @@ public class RobotContainer {
                         new ArcadeDriveCommand(
                                 m_driveTrainSubsystem,
                                 xboxController,
-                                moveFlightStick,
-                                rotateFlightStick,
+                                mainFlightStick,
+                                altFlightStick,
                                 Yoke,
                                 Pedals,
                                 NavX));
 
-        // NavXOutputSubsystem.getInstance().setDefaultCommand(new
-        // NavXOutputCommand(m_NavXOutputSubsystem, NavX));
 
         // Held Buttons
         activateIntakeButton.whileHeld(m_spinIntakeCommand, false);
         ShootButton.whileHeld(m_shootingCommandGroup, false);
 
         // Pressed Buttons
-        // quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
         aimTurret.whenPressed(m_zeroAndAimCommandGroup);
-        quickTurn.whenPressed(new ChangeQuickTurnCommand(m_driveTrainSubsystem));
 
         // Sensor Activations
         intakeLowerLimitSwitch.whenPressed(m_stopIntakeCommand);

@@ -3,6 +3,7 @@ package frc.robot.commands.ClimbCommands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ClimbSubsystem;
 
+
 public class AutoClimbCommand extends CommandBase {
     private final ClimbSubsystem climbSubsystem;
 
@@ -12,10 +13,14 @@ public class AutoClimbCommand extends CommandBase {
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+
+    }
 
     @Override
-    public void execute() {}
+    public void execute() {
+
+    }
 
     @Override
     public boolean isFinished() {
@@ -24,5 +29,7 @@ public class AutoClimbCommand extends CommandBase {
     }
 
     @Override
-    public void end(boolean interrupted) {}
+    public void end(boolean interrupted) {
+
+    }
 }
