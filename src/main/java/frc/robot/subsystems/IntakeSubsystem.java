@@ -37,14 +37,11 @@ public class IntakeSubsystem extends SubsystemBase {
         }
     }
 
-    public void moveIntake(int direction, double power) {
-        intakeRotator.set(direction * power);
-    }
+    public void lowerIntake() { intakeRotator.set(-.3); }
 
-    public void disableIntake() {
-        intakeMotor.set(0);
-        atLimit = true;
-    }
+    public void raiseIntake() { intakeRotator.set(.3); }
+
+    public void disableIntake() { intakeRotator.set(0); }
 
     private void intakeProtection() {
         if (Math.abs(intakeMotor.getStatorCurrent()) > intakeCurrentLimit) {

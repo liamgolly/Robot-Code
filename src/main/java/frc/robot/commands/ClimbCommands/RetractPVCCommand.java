@@ -19,7 +19,7 @@ public class RetractPVCCommand extends CommandBase {
 
     @Override
     public void execute() {
-
+        climbSubsystem.lowerPVC();
     }
 
     @Override

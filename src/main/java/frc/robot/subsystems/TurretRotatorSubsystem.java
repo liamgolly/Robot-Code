@@ -8,6 +8,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.classes.AlphaTalon;
 
@@ -15,7 +16,7 @@ public class TurretRotatorSubsystem extends SubsystemBase {
 
     AlphaTalon turretRotator = new AlphaTalon(turretRotatorID);
 
-    private double p;
+    private double p = 0;
     private double i = 0;
     private double d = 0;
     public double previous_error;
@@ -23,6 +24,10 @@ public class TurretRotatorSubsystem extends SubsystemBase {
     public double derivative;
 
     private double motorpower = 0;
+
+    private Timer aimtimer = new Timer();
+    public boolean Aimed = false;
+
 
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry targetx = table.getEntry("tx");
@@ -58,6 +63,13 @@ public class TurretRotatorSubsystem extends SubsystemBase {
         turretRotator.set(motorpower);
 
         previous_error = error;
+
+        if (error < 3) {
+            if (aimtimer.get() == 0) { aimtimer.start(); }
+
+            if (aimtimer.get() > 1) { Aimed = true; }
+        }
+        if (error > 3) { aimtimer.reset(); }
     }
 
     private void limitSwitchHit(boolean sensorValue) {

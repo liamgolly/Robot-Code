@@ -17,12 +17,13 @@ public class AimTurretCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {
+        turretrotatorsubsystem.aimTurret();
+    }
 
     @Override
     public boolean isFinished() {
-
-        return false;
+        return turretrotatorsubsystem.Aimed;
     }
 
     @Override

@@ -15,7 +15,9 @@ public class ExtendPVCCommand extends CommandBase {
     public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {
+        climbSubsystem.raisePVC();
+    }
 
     @Override
     public boolean isFinished() {

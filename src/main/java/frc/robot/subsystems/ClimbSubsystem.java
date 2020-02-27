@@ -13,6 +13,8 @@ public class ClimbSubsystem extends SubsystemBase {
     AlphaTalon leftWinch = new AlphaTalon(leftWinchID);
     AlphaTalon rightWinch = new AlphaTalon(rightWinchID);
 
+    public boolean done;
+
     private static final ClimbSubsystem INSTANCE = new ClimbSubsystem();
 
     private ClimbSubsystem() {}
@@ -20,11 +22,19 @@ public class ClimbSubsystem extends SubsystemBase {
     public void raisePVC() {
         if (pvcExtender.getSelectedSensorPosition() * PVCEncoderInch < 35) {
             pvcExtender.set(.3);
+            done = false;
+        }
+        else{
+            done = true;
         }
     }
     public void lowerPVC() {
         if (pvcExtender.getSelectedSensorPosition() * PVCEncoderInch > 1) {
             pvcExtender.set(-.3);
+            done = false;
+        }
+        else {
+            done = true;
         }
     }
 
