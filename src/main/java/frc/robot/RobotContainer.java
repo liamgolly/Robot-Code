@@ -19,7 +19,9 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.ClimbCommands.AutoClimbCommand;
 import frc.robot.commands.ClimbCommands.ExtendPVCCommand;
+import frc.robot.commands.ClimbCommands.ManualClimbCommand;
 import frc.robot.commands.ClimbCommands.RetractPVCCommand;
 import frc.robot.commands.DriveCommands.ArcadeDriveCommand;
 import frc.robot.commands.IntakeCommands.LowerIntakeCommand;
@@ -96,9 +98,11 @@ public class RobotContainer {
         m_ledControlSubsystem.setDefaultCommand(new LedControlCommand(m_ledControlSubsystem));
 
         // Held Buttons
-        ShootButton.whileHeld(new ShootingCommandGroup(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem), false);
+        ShootButton.whileHeld(new ShootingCommandGroup(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem), true);
         EnableTriangle.whileHeld(new HopperCommand(m_hopperSubsystem));
         EnableLift.whileHeld(new TurretIntakeCommand(m_turretIntakeSubsystem));
+        AutoClimb.whileHeld(new AutoClimbCommand(NavX));
+        OverrideClimbMode.whileHeld(new ManualClimbCommand(mainFlightStick, altFlightStick));
 
         // Pressed Buttons
         aimTurret.whenPressed(new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator));

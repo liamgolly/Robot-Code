@@ -32,16 +32,22 @@ public final class Constants {
         public static int LowerIntakeID = 9;
         public static int RaiseIntakeID = 10;
         public static int OverrideIntakeID = 11;
+        public static int ManualWinchLeftAxisID = 1;
         public static int ManualAimAxisID = 2;
 
 
         public static int AutoClimbID = 2; //alt stick
         public static int ColorWheelStageOneID = 8;
         public static int ColorWheelStageTwoID = 9;
+        public static int ManualWinchRightAxisID = 1;
+
 
     }
 
-    public static final class ClimbConstants { }
+    public static final class ClimbConstants {
+        public static final double InchLiftTolerance = 2;
+        public static final double WinchPower = 0.3;
+    }
 
     public static final class ControlPorts {
         public static final int controllerPort = 0;

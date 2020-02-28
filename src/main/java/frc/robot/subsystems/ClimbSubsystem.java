@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import static frc.robot.Constants.AutonomousConstants.*;
 import static frc.robot.Constants.MotorID.*;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.classes.AlphaTalon;
 
@@ -13,7 +12,8 @@ public class ClimbSubsystem extends SubsystemBase {
     AlphaTalon leftWinch = new AlphaTalon(leftWinchID);
     AlphaTalon rightWinch = new AlphaTalon(rightWinchID);
 
-    public boolean done;
+    public boolean pvcDone;
+    public boolean ManualOverride;
 
     private static final ClimbSubsystem INSTANCE = new ClimbSubsystem();
 
@@ -22,23 +22,26 @@ public class ClimbSubsystem extends SubsystemBase {
     public void raisePVC() {
         if (pvcExtender.getSelectedSensorPosition() * PVCEncoderInch < 35) {
             pvcExtender.set(.3);
-            done = false;
+            pvcDone = false;
         }
         else{
-            done = true;
+            pvcDone = true;
         }
     }
     public void lowerPVC() {
         if (pvcExtender.getSelectedSensorPosition() * PVCEncoderInch > 1) {
             pvcExtender.set(-.3);
-            done = false;
+            pvcDone = false;
         }
         else {
-            done = true;
+            pvcDone = true;
         }
     }
 
-    public double getAbsoluteBarAngle(double angle, String startingSide) {
+    public void resetLeftEncoder() {leftWinch.setSelectedSensorPosition(0); }
+    public void resetRightEncoder() {rightWinch.setSelectedSensorPosition(0); }
+
+    public double getAbsoluteBarAngle(double angle, String startingHigherSide) {
 
         double leftDisplacement;
         double rightDisplacement;
@@ -57,11 +60,11 @@ public class ClimbSubsystem extends SubsystemBase {
         }
 
 
-        if (startingSide.equals("left")) {
+        if (startingHigherSide.equals("left")) {
             absoluteAngle = Math.atan((leftDisplacement - rightDisplacement) / HookDistance);
         }
 
-        if (startingSide.equals("right")) {
+        if (startingHigherSide.equals("right")) {
             absoluteAngle = Math.atan((rightDisplacement - leftDisplacement) / HookDistance);
         }
 
@@ -85,6 +88,8 @@ public class ClimbSubsystem extends SubsystemBase {
             return (rightWinch.get() * WinchEncoderInch) + (Math.tan(angle) * HookDistance);
         }
     }
+    public boolean leftWinchOnBar() { return leftWinch.getStatorCurrent() > 35; }
+    public boolean rightWinchOnBar() {return rightWinch.getStatorCurrent() > 35; }
 
     public void activeLeftWinch(double power) {
         leftWinch.set(power);
@@ -94,6 +99,7 @@ public class ClimbSubsystem extends SubsystemBase {
     }
     public void deactivateLeftWinch() {leftWinch.set(0); }
     public void deactivateRightWinch() {rightWinch.set(0); }
+
 
 
     public static ClimbSubsystem getInstance() {
