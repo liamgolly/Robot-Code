@@ -27,6 +27,7 @@ import frc.robot.commands.IntakeCommands.RaiseIntakeCommand;
 import frc.robot.commands.IntakeCommands.SpinIntakeCommand;
 import frc.robot.commands.IntakeCommands.StopIntakeCommand;
 import frc.robot.commands.NonOICommands.BrownoutProtectionCommand;
+import frc.robot.commands.NonOICommands.LedControlCommand;
 import frc.robot.commands.TurretCommands.AimingTurret.AimTurretCommand;
 import frc.robot.commands.TurretCommands.AimingTurret.ZeroAndAimCommandGroup;
 import frc.robot.commands.TurretCommands.AimingTurret.ZeroTurretCommand;
@@ -36,6 +37,7 @@ import frc.robot.commands.TurretCommands.ShootingTurret.ShootingCommandGroup;
 import frc.robot.commands.TurretCommands.ShootingTurret.TurretIntakeCommand;
 import frc.robot.subsystems.*;
 import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
+import frc.robot.subsystems.NonOISubsystems.LedControlSubsystem;
 import frc.robot.subsystems.TestSubsystems.NavXOutputSubsystem;
 
 public class RobotContainer {
@@ -63,6 +65,7 @@ public class RobotContainer {
     ShooterSubsystem m_shooterSubsystem = ShooterSubsystem.getInstance();
     TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
     TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
+    LedControlSubsystem m_ledControlSubsystem = LedControlSubsystem.getInstance();
 
     // Buttons
     JoystickButton LowerIntakeButton = new JoystickButton(mainFlightStick, LowerIntakeID);
@@ -90,6 +93,7 @@ public class RobotContainer {
 
 //      CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         m_drivetrainSubsystem.setDefaultCommand(new ArcadeDriveCommand(m_drivetrainSubsystem, xboxController, mainFlightStick, altFlightStick, Yoke, Pedals, NavX));
+        m_ledControlSubsystem.setDefaultCommand(new LedControlCommand(m_ledControlSubsystem));
 
         // Held Buttons
         ShootButton.whileHeld(new ShootingCommandGroup(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem), false);
