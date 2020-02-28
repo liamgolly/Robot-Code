@@ -51,6 +51,7 @@ public final class Constants {
 
     public static final class CurrentLimitingConstants {
         public static final double currentLimit = 100;
+        public static final double xStep = .1;
     }
 
     public static final class HopperConstants {
