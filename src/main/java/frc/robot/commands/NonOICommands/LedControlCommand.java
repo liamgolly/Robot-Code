@@ -7,12 +7,9 @@ import frc.robot.subsystems.NonOISubsystems.LedControlSubsystem;
 
 public class LedControlCommand extends CommandBase {
 
-    LedControlSubsystem ledControlSubsystem;
+    LedControlSubsystem ledControlSubsystem = LedControlSubsystem.getInstance();
 
-    public LedControlCommand(LedControlSubsystem m_LedControlSubsystem) {
-
-        ledControlSubsystem = m_LedControlSubsystem;
-
+    public LedControlCommand() {
         addRequirements(ledControlSubsystem);
     }
 

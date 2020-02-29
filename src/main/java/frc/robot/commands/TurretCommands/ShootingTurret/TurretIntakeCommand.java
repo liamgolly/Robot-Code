@@ -4,12 +4,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretIntakeSubsystem;
 
 public class TurretIntakeCommand extends CommandBase {
-    private final TurretIntakeSubsystem turretIntakeSubsystem;
+    private final TurretIntakeSubsystem turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
 
-    public TurretIntakeCommand(TurretIntakeSubsystem turretIntakeSubsystem) {
-        this.turretIntakeSubsystem = turretIntakeSubsystem;
-        addRequirements(turretIntakeSubsystem);
-    }
+    public TurretIntakeCommand() { addRequirements(turretIntakeSubsystem); }
 
     @Override
     public void initialize() {}

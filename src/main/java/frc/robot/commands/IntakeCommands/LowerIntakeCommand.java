@@ -6,11 +6,10 @@ import frc.robot.subsystems.IntakeSubsystem;
 
 
 public class LowerIntakeCommand extends CommandBase {
-    private final IntakeSubsystem intakeSubsystem;
+    private final IntakeSubsystem intakeSubsystem = IntakeSubsystem.getInstance();
     DigitalInput lowerlimit;
 
-    public LowerIntakeCommand(IntakeSubsystem intakeSubsystem, DigitalInput lowerLimit) {
-        this.intakeSubsystem = intakeSubsystem;
+    public LowerIntakeCommand(DigitalInput lowerLimit) {
         lowerlimit = lowerLimit;
         addRequirements(intakeSubsystem);
     }

@@ -5,11 +5,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TurretRotatorSubsystem;
 
 public class ZeroTurretCommand extends CommandBase {
-    private final TurretRotatorSubsystem turretRotatorSubsystem;
+    private final TurretRotatorSubsystem turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
     private final DigitalInput sensor;
 
-    public ZeroTurretCommand(TurretRotatorSubsystem turretRotatorSubsystem, DigitalInput Sensor) {
-        this.turretRotatorSubsystem = turretRotatorSubsystem;
+    public ZeroTurretCommand (DigitalInput Sensor) {
         this.sensor = Sensor;
         addRequirements(turretRotatorSubsystem);
     }

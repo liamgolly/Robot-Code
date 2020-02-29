@@ -5,13 +5,9 @@ import frc.robot.subsystems.TurretRotatorSubsystem;
 
 public class AimTurretCommand extends CommandBase {
 
-    TurretRotatorSubsystem turretrotatorsubsystem;
+    TurretRotatorSubsystem turretrotatorsubsystem = TurretRotatorSubsystem.getInstance();
 
-    public AimTurretCommand(TurretRotatorSubsystem turretRotatorSubsystem) {
-        turretrotatorsubsystem = turretRotatorSubsystem;
-
-        this.addRequirements(turretRotatorSubsystem);
-    }
+    public AimTurretCommand() { this.addRequirements(turretrotatorsubsystem); }
 
     @Override
     public void initialize() {}

@@ -6,15 +6,6 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.TurretIntakeSubsystem;
 
 public class ShootingCommandGroup extends ParallelCommandGroup {
-    public ShootingCommandGroup(
-            HopperSubsystem hopperSubsystem,
-            ShooterSubsystem shooterSubsystem,
-            TurretIntakeSubsystem turretIntakeSubsystem) {
-        // TODO: Add your sequential commands in the super() call, e.g.
-        //           super(new FooCommand(), new BarCommand());
-        super(
-                new HopperCommand(hopperSubsystem),
-                new ShootTurretCommand(shooterSubsystem),
-                new TurretIntakeCommand(turretIntakeSubsystem));
-    }
+    public ShootingCommandGroup() {
+        super(new HopperCommand(), new ShootTurretCommand(), new TurretIntakeCommand()); }
 }

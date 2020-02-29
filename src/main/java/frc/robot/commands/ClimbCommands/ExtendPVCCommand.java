@@ -4,10 +4,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ClimbSubsystem;
 
 public class ExtendPVCCommand extends CommandBase {
-    private final ClimbSubsystem climbSubsystem;
+    private final ClimbSubsystem climbSubsystem = ClimbSubsystem.getInstance();
 
-    public ExtendPVCCommand(ClimbSubsystem climbSubsystem) {
-        this.climbSubsystem = climbSubsystem;
+    public ExtendPVCCommand() {
         addRequirements(climbSubsystem);
     }
 

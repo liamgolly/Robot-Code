@@ -4,12 +4,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.HopperSubsystem;
 
 public class HopperCommand extends CommandBase {
-    private final HopperSubsystem hopperSubsystem;
+    private final HopperSubsystem hopperSubsystem = HopperSubsystem.getInstance();
 
-    public HopperCommand(HopperSubsystem hopperSubsystem) {
-        this.hopperSubsystem = hopperSubsystem;
-        addRequirements(hopperSubsystem);
-    }
+    public HopperCommand() { addRequirements(hopperSubsystem); }
 
     @Override
     public void initialize() {}

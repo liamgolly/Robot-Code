@@ -7,11 +7,9 @@ import java.util.Arrays;
 
 public class BrownoutProtectionCommand extends CommandBase {
 
-    CurrentLimiterSubsystem currentLimiterSubsystem;
+    CurrentLimiterSubsystem currentLimiterSubsystem = CurrentLimiterSubsystem.getInstance();
 
-    public BrownoutProtectionCommand(CurrentLimiterSubsystem m_currentLimiterSubsystem) {
-
-        currentLimiterSubsystem = m_currentLimiterSubsystem;
+    public BrownoutProtectionCommand() {
 
         addRequirements(currentLimiterSubsystem);
     }

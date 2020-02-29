@@ -8,33 +8,23 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DrivetrainSubsystem;
 
 public class ArcadeDriveCommand extends CommandBase {
-    private final DrivetrainSubsystem drivetrainSubsystem;
+    private final DrivetrainSubsystem drivetrainSubsystem = DrivetrainSubsystem.getInstance();
 
     Joystick m_xboxController;
     Joystick m_moveStick;
     Joystick m_rotateStick;
-
-    Joystick yoke;
-    Joystick pedals;
-
     AHRS navx;
 
     public ArcadeDriveCommand(
-            DrivetrainSubsystem drivetrainSubsystem,
             Joystick XboxController,
             Joystick MoveStick,
             Joystick RotateStick,
-            Joystick YOKE,
-            Joystick PEDALS,
             AHRS NavX) {
         m_xboxController = XboxController;
         m_moveStick = MoveStick;
         m_rotateStick = RotateStick;
-        yoke = YOKE;
-        pedals = PEDALS;
         navx = NavX;
 
-        this.drivetrainSubsystem = drivetrainSubsystem;
         addRequirements(drivetrainSubsystem);
     }
 
@@ -67,12 +57,12 @@ public class ArcadeDriveCommand extends CommandBase {
                         m_rotateStick.getRawAxis(flightStickRotateAxis),
                         navx.getAngle());
 
-            case 3:
-                drivetrainSubsystem.ArcadeDriveStraight(
-                        ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2)
-                                - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
-                        yoke.getRawAxis(yokeTurnAxis),
-                        navx.getAngle());
+//            case 3:
+//                drivetrainSubsystem.ArcadeDriveStraight(
+//                        ((pedals.getRawAxis(pedalAccelerateAxis) + 1) / 2)
+//                                - ((pedals.getRawAxis(pedalBrakeAxis) + 1) / 2),
+//                        yoke.getRawAxis(yokeTurnAxis),
+//                        navx.getAngle());
         }
     }
 

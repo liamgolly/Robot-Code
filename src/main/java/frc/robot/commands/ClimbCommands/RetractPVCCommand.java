@@ -5,12 +5,9 @@ import frc.robot.subsystems.ClimbSubsystem;
 
 
 public class RetractPVCCommand extends CommandBase {
-    private final ClimbSubsystem climbSubsystem;
+    private final ClimbSubsystem climbSubsystem = ClimbSubsystem.getInstance();
 
-    public RetractPVCCommand(ClimbSubsystem climbSubsystem) {
-        this.climbSubsystem = climbSubsystem;
-        addRequirements(climbSubsystem);
-    }
+    public RetractPVCCommand() { addRequirements(climbSubsystem); }
 
     @Override
     public void initialize() {

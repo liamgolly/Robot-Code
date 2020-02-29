@@ -59,14 +59,7 @@ public class RobotContainer {
     AHRS NavX = new AHRS(SerialPort.Port.kUSB);
 
     // Subsystem Imports
-    CurrentLimiterSubsystem m_currentLimiterSubsystem = CurrentLimiterSubsystem.getInstance();
-    ClimbSubsystem m_climbSubsystem = ClimbSubsystem.getInstance();
     DrivetrainSubsystem m_drivetrainSubsystem = DrivetrainSubsystem.getInstance();
-    HopperSubsystem m_hopperSubsystem = HopperSubsystem.getInstance();
-    IntakeSubsystem m_intakeSubsystem = IntakeSubsystem.getInstance();
-    ShooterSubsystem m_shooterSubsystem = ShooterSubsystem.getInstance();
-    TurretIntakeSubsystem m_turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
-    TurretRotatorSubsystem m_turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
     LedControlSubsystem m_ledControlSubsystem = LedControlSubsystem.getInstance();
 
     // Buttons
@@ -94,23 +87,23 @@ public class RobotContainer {
         // Default Commands
 
 //      CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
-        m_drivetrainSubsystem.setDefaultCommand(new ArcadeDriveCommand(m_drivetrainSubsystem, xboxController, mainFlightStick, altFlightStick, Yoke, Pedals, NavX));
-        m_ledControlSubsystem.setDefaultCommand(new LedControlCommand(m_ledControlSubsystem));
+        m_drivetrainSubsystem.setDefaultCommand(new ArcadeDriveCommand(xboxController, mainFlightStick, altFlightStick, NavX));
+        m_ledControlSubsystem.setDefaultCommand(new LedControlCommand());
 
         // Held Buttons
-        ShootButton.whileHeld(new ShootingCommandGroup(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem), true);
-        EnableTriangle.whileHeld(new HopperCommand(m_hopperSubsystem));
-        EnableLift.whileHeld(new TurretIntakeCommand(m_turretIntakeSubsystem));
+        ShootButton.whileHeld(new ShootingCommandGroup(), true);
+        EnableTriangle.whileHeld(new HopperCommand());
+        EnableLift.whileHeld(new TurretIntakeCommand());
         AutoClimb.whileHeld(new AutoClimbCommand(NavX));
         OverrideClimbMode.whileHeld(new ManualClimbCommand(mainFlightStick, altFlightStick));
 
         // Pressed Buttons
-        aimTurret.whenPressed(new ZeroAndAimCommandGroup(m_turretRotatorSubsystem, hallTurretRotator));
-        LowerIntakeButton.whenPressed(new LowerIntakeCommand(m_intakeSubsystem, intakeLowerLimit));
-        RaiseIntake.whenPressed(new RaiseIntakeCommand(m_intakeSubsystem, intakeUpperLimit));
-        OverrideIntake.whenPressed(new DisableTurretFeedCommand(m_hopperSubsystem, m_shooterSubsystem, m_turretIntakeSubsystem));
-        RaisePVC.whenPressed(new ExtendPVCCommand(m_climbSubsystem));
-        LowerPVC.whenPressed(new RetractPVCCommand(m_climbSubsystem));
+        aimTurret.whenPressed(new ZeroAndAimCommandGroup(hallTurretRotator));
+        LowerIntakeButton.whenPressed(new LowerIntakeCommand(intakeLowerLimit));
+        RaiseIntake.whenPressed(new RaiseIntakeCommand(intakeUpperLimit));
+        OverrideIntake.whenPressed(new DisableTurretFeedCommand());
+        RaisePVC.whenPressed(new ExtendPVCCommand());
+        LowerPVC.whenPressed(new RetractPVCCommand());
 
         // Sensor Activations
     }

@@ -7,16 +7,11 @@ import frc.robot.subsystems.TurretIntakeSubsystem;
 
 
 public class DisableTurretFeedCommand extends CommandBase {
-    private final HopperSubsystem hopperSubsystem;
-    private final ShooterSubsystem shooterSubsystem;
-    private final TurretIntakeSubsystem turretIntakeSubsystem;
+    private final HopperSubsystem hopperSubsystem = HopperSubsystem.getInstance();
+    private final ShooterSubsystem shooterSubsystem = ShooterSubsystem.getInstance();
+    private final TurretIntakeSubsystem turretIntakeSubsystem = TurretIntakeSubsystem.getInstance();
 
-    public DisableTurretFeedCommand(HopperSubsystem hopperSubsystem, ShooterSubsystem shooterSubsystem, TurretIntakeSubsystem turretIntakeSubsystem) {
-        this.hopperSubsystem = hopperSubsystem;
-        this.shooterSubsystem = shooterSubsystem;
-        this.turretIntakeSubsystem = turretIntakeSubsystem;
-        addRequirements(hopperSubsystem, shooterSubsystem, turretIntakeSubsystem);
-    }
+    public DisableTurretFeedCommand() { addRequirements(hopperSubsystem, shooterSubsystem, turretIntakeSubsystem); }
 
     @Override
     public void initialize() {

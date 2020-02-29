@@ -6,13 +6,6 @@ import frc.robot.subsystems.TurretRotatorSubsystem;
 
 public class ZeroAndAimCommandGroup extends SequentialCommandGroup {
 
-    public ZeroAndAimCommandGroup(
-            TurretRotatorSubsystem turretRotatorSubsystem, DigitalInput LimitSwitch) {
-
-        // TODO: Add your sequential commands in the super() call, e.g.
-        //           super(new FooCommand(), new BarCommand());
-        super(
-                new ZeroTurretCommand(turretRotatorSubsystem, LimitSwitch),
-                new AimTurretCommand(turretRotatorSubsystem));
-    }
+    public ZeroAndAimCommandGroup(DigitalInput LimitSwitch) {
+        super(new ZeroTurretCommand(LimitSwitch), new AimTurretCommand()); }
 }

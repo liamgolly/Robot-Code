@@ -6,11 +6,10 @@ import frc.robot.subsystems.IntakeSubsystem;
 
 
 public class RaiseIntakeCommand extends CommandBase {
-    private final IntakeSubsystem intakeSubsystem;
+    private final IntakeSubsystem intakeSubsystem = IntakeSubsystem.getInstance();
     DigitalInput upperlimit;
 
-    public RaiseIntakeCommand(IntakeSubsystem intakeSubsystem, DigitalInput upperLimit) {
-        this.intakeSubsystem = intakeSubsystem;
+    public RaiseIntakeCommand(DigitalInput upperLimit) {
         upperlimit = upperLimit;
         addRequirements(intakeSubsystem);
     }

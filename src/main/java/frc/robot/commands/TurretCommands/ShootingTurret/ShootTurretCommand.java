@@ -4,12 +4,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShootTurretCommand extends CommandBase {
-    private final ShooterSubsystem shooterSubsystem;
+    private final ShooterSubsystem shooterSubsystem = ShooterSubsystem.getInstance();
 
-    public ShootTurretCommand(ShooterSubsystem shooterSubsystem) {
-        this.shooterSubsystem = shooterSubsystem;
-        addRequirements(shooterSubsystem);
-    }
+    public ShootTurretCommand() { addRequirements(shooterSubsystem); }
 
     @Override
     public void initialize() {}
