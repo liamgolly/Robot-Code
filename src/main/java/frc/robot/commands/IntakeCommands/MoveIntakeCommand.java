@@ -21,7 +21,7 @@ public class MoveIntakeCommand extends CommandBase {
 
     @Override
     public void execute() {
-        intakeSubsystem.moveIntake(State, intakeRotatorPower);
+       
     }
 
     @Override
