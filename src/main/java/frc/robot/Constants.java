@@ -137,10 +137,18 @@ public final class Constants {
     public static final class ShooterConstants {
         public static final double shooterPower = 1;
         public static final double shooterClamp = .2;
+        public static final double deltaHeightInches = 48;
     }
 
     public static final class TurretIntakeConstants {
         public static final double turretIntakePower = 0.5;
+    }
+
+    public static final class TurretRotatorConstants {
+        public static final double turretRotatorP = 0;
+        public static final double turretRotatorI = 0;
+        public static final double turretRotatorD = 0;
+        public static final double turretRotatorMotorPower = 0;
     }
 }
 

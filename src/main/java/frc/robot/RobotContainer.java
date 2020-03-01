@@ -61,7 +61,7 @@ public class RobotContainer {
     DigitalInput intakeLowerLimit = new DigitalInput(hallSensorLowerIntakeRotator);
 
     AHRS NavX = new AHRS(SerialPort.Port.kUSB);
-    Limelight limelight = new Limelight(true);
+    Limelight limelight = new Limelight();
 
     // Subsystem Imports
     DrivetrainSubsystem m_drivetrainSubsystem = DrivetrainSubsystem.getInstance();

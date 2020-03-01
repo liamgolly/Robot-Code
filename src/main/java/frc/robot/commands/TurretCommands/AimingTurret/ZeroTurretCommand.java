@@ -7,6 +7,7 @@ import frc.robot.subsystems.TurretRotatorSubsystem;
 public class ZeroTurretCommand extends CommandBase {
     private final TurretRotatorSubsystem turretRotatorSubsystem = TurretRotatorSubsystem.getInstance();
     private final DigitalInput sensor;
+    boolean isLinedUp = false;
 
     public ZeroTurretCommand (DigitalInput Sensor) {
         this.sensor = Sensor;
@@ -18,12 +19,18 @@ public class ZeroTurretCommand extends CommandBase {
 
     @Override
     public void execute() {
-        turretRotatorSubsystem.zeroTurret(sensor.get());
+        isLinedUp = sensor.get();
+        if (sensor.get()) {
+            turretRotatorSubsystem.turnTurretPower(0.2);
+        } else {
+            turretRotatorSubsystem.turnTurretPower(0.0);
+            turretRotatorSubsystem.zeroTurretEncoder(isLinedUp);
+        }
     }
 
     @Override
     public boolean isFinished() {
-        return !sensor.get();
+        return isLinedUp;
     }
 
     @Override

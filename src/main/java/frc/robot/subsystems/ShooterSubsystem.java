@@ -13,7 +13,6 @@ import java.util.HashMap;
 
 public class ShooterSubsystem extends SubsystemBase {
 
-    Limelight limelight = new Limelight();
     AlphaTalon shooter = new AlphaTalon(shooterID);
     private static final ShooterSubsystem INSTANCE = new ShooterSubsystem();
 
@@ -28,10 +27,7 @@ public class ShooterSubsystem extends SubsystemBase {
         shooter.set(0);
     }
 
-    public double CalcTurretDistance() {
-        double height = 10;
-        return height/Math.tan(limelight.getTy());
-    }
+
 
     public static ShooterSubsystem getInstance() {
         return INSTANCE;
