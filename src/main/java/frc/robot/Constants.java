@@ -32,6 +32,7 @@ public final class Constants {
         public static int LowerIntakeID = 9;
         public static int RaiseIntakeID = 10;
         public static int OverrideIntakeID = 11;
+        public static int LimelightAimID = 12;
         public static int ManualWinchLeftAxisID = 1;
         public static int ManualAimAxisID = 2;
 

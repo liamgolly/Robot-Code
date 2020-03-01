@@ -17,8 +17,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.classes.Limelight;
 import frc.robot.commands.ClimbCommands.AutoClimbCommand;
 import frc.robot.commands.ClimbCommands.ExtendPVCCommand;
 import frc.robot.commands.ClimbCommands.ManualClimbCommand;
@@ -42,6 +44,8 @@ import frc.robot.subsystems.NonOISubsystems.CurrentLimiterSubsystem;
 import frc.robot.subsystems.NonOISubsystems.LedControlSubsystem;
 import frc.robot.subsystems.TestSubsystems.NavXOutputSubsystem;
 
+import javax.naming.LinkLoopException;
+
 public class RobotContainer {
 
     // Controllers and Sensors
@@ -57,6 +61,7 @@ public class RobotContainer {
     DigitalInput intakeLowerLimit = new DigitalInput(hallSensorLowerIntakeRotator);
 
     AHRS NavX = new AHRS(SerialPort.Port.kUSB);
+    Limelight limelight = new Limelight(true);
 
     // Subsystem Imports
     DrivetrainSubsystem m_drivetrainSubsystem = DrivetrainSubsystem.getInstance();
@@ -74,6 +79,7 @@ public class RobotContainer {
     JoystickButton RaiseIntake = new JoystickButton(mainFlightStick, RaiseIntakeID);
     JoystickButton OverrideIntake = new JoystickButton(mainFlightStick, OverrideIntakeID);
     JoystickButton AutoClimb = new JoystickButton(mainFlightStick, AutoClimbID);
+    JoystickButton LimelightAim = new JoystickButton(mainFlightStick, LimelightAimID);
 
     JoystickButton StageOneColorWheel = new JoystickButton(altFlightStick, ColorWheelStageOneID);
     JoystickButton StageTwoColorWheel = new JoystickButton(altFlightStick, ColorWheelStageTwoID);
