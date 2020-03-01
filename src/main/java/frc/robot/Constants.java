@@ -134,9 +134,8 @@ public final class Constants {
     }
 
     public static final class ShooterConstants {
-        public static final int aimButtonID = 9;
         public static final double shooterPower = 1;
-        public static final int shootButtonID = 6;
+        public static final double shooterClamp = .2;
     }
 
     public static final class TurretIntakeConstants {

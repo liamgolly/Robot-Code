@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import static frc.robot.Constants.MotorID.*;
 import static frc.robot.Constants.SensorID.hallSensorTurretRotator;
+import static frc.robot.Constants.ShooterConstants.*;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.networktables.NetworkTable;
@@ -59,6 +60,9 @@ public class TurretRotatorSubsystem extends SubsystemBase {
         } else {
             motorpower = 0;
         }
+
+
+        motorpower = Math.max(-shooterClamp, Math.min(shooterClamp, motorpower));
 
         turretRotator.set(motorpower);
 
