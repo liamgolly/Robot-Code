@@ -88,7 +88,8 @@ public class RobotContainer {
 
 //      CurrentLimiterSubsystem.getInstance().setDefaultCommand(m_brownoutProtectionCommand);
         m_drivetrainSubsystem.setDefaultCommand(new ArcadeDriveCommand(xboxController, mainFlightStick, altFlightStick, NavX));
-        m_ledControlSubsystem.setDefaultCommand(new LedControlCommand());
+        //m_ledControlSubsystem.setDefaultCommand(new LedControlCommand());
+        //m_ledTextSubsystem.setDefaultCommand(new LEDTextCommand());
 
         // Held Buttons
         ShootButton.whileHeld(new ShootingCommandGroup(), true);
